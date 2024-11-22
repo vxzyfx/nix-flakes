@@ -29,6 +29,12 @@ in {
       example = "localhost";
       description = "主机名";
     };
+    editor = mkOption {
+      type = types.str;
+      default = "vim";
+      example = "vim";
+      description = "默认编辑器";
+    };
     allowUnfree = mkOption {
       type = types.bool;
       default = true;
@@ -61,6 +67,7 @@ in {
       i18n.supportedLocales = mkDefault [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
     })
     {
+      environment.variables.EDITOR = cfg.editor;
       nixpkgs.config.allowUnfree = mkDefault cfg.allowUnfree;
       networking.hostName = mkDefault cfg.hostname;
     }
