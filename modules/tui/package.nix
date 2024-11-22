@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  vars,
   ...
 }: 
 with lib;
@@ -22,6 +21,8 @@ in {
       description = "通用软件包";
       default = with pkgs;[
         git
+        wget
+        vim
         curlHTTP3
         neofetch
         tree
