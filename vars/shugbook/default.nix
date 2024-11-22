@@ -1,0 +1,57 @@
+{
+  system = "x86_64-linux";
+  modules = ({pkgs, ...}: {
+    imports = [
+      ./hardware.nix
+    ];
+    modules.gui.font.enable = true;
+    modules.nixos.boot.systemd.enable = true;
+    modules.nixos.virt.enable = true;
+    modules.nixos.logid.enable = true;
+    modules.nixos.desktop.enable = true;
+    modules.tui.openssh.enable = true;
+    modules.tui.lang.enableAll = true;
+
+    networking.useDHCP = false;
+    networking.wireless.iwd.enable = true;
+    boot.blacklistedKernelModules = [ "nouveau" ];
+    systemd.network.enable = true;
+    services.resolved.enable = false;
+    networking.nameservers = [ "192.168.21.1" ];
+    systemd.network.networks.wlan0 = {
+      enable = true;
+      matchConfig = {
+        Name = "wlan0";
+      };
+      name = "wlan0";
+      gateway =  [ "192.168.21.1" ];
+      address = [ "192.168.21.91/24" ];
+    };
+    users.users.shug = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "audio" "video" "lp" "kvm" "uucp" "input" "seat" "dialout" "qemu-libvirtd" "libvirtd" ];
+    };
+  });
+  users.shug = {
+    username = "shug";
+    home-modules = ({...}: {
+      home-modules.direnv.enable = true;
+      home-modules.direnv.enableBashIntegration = true;
+      home-modules.git.enable = true;
+      home-modules.jetbrains.enable = true;
+      home-modules.kitty.enable = true;
+      home-modules.starship.enable = true;
+      home-modules.starship.enableBashIntegration = true;
+      home-modules.vscode.enable = true;
+      home-modules.shell.bash.enable = true;
+      home-modules.hyprland.enable = true;
+      home-modules.launcher.fuzzel.enable = true;
+      home-modules.waybar.enable = true;
+      home-modules.mako.enable = true;
+      home-modules.neovim.enable = true;
+
+      programs.git.userName = "shug";
+      programs.git.userEmail = "vxzyfx@gmail.com";
+    });
+  };
+}
