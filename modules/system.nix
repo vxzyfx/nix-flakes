@@ -39,7 +39,13 @@ in {
       type = types.bool;
       default = true;
       example = false;
-      description = "判断是否是Darwin系统";
+      description = "允许安装非自由软件";
+    };
+    timeZone = mkOption {
+      type = types.str;
+      default = "Asia/Shanghai";
+      example = "Asia/Shanghai";
+      description = "系统时区";
     };
     isDarwin = mkOption {
       type = types.bool;
@@ -67,6 +73,7 @@ in {
       i18n.supportedLocales = mkDefault [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
     })
     {
+      time.timeZone = mkDefault cfg.timeZone;
       environment.variables.EDITOR = cfg.editor;
       nixpkgs.config.allowUnfree = mkDefault cfg.allowUnfree;
       networking.hostName = mkDefault cfg.hostname;
