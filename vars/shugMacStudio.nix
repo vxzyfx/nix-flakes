@@ -37,6 +37,10 @@
       home-modules.starship.enableZshIntegration = true;
       home-modules.vscode.enable = true;
       home-modules.shell.zsh.enable = true;
+      home-modules.k8s.kubectl.enable = true;
+      home-modules.k8s.kubectl.enableZshIntegration = true;
+      home-modules.k8s.helm.enable = true;
+      home-modules.k8s.helm.enableZshIntegration = true;
 
       programs.git.userName = "shug";
       programs.git.userEmail = "vxzyfx@gmail.com";
