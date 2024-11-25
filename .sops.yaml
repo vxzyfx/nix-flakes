@@ -1,0 +1,11 @@
+keys:
+  - &admin_shug age1ptsvfmvellvya89lfc3a2y772f7unasm476uc5mxk7kjdcj7a3cqnyzats
+  - &admin_shugbook age1wxhnvs2c3ls42grgdtepsr23ewahq63xntc5fu9zxpgkgh666exsk3ztsa
+  - &admin_mac age1t7rtwguuhe7emtec4fegw9lg46lw0cye46ygr7j88x9kgkyw3uwqfnnlny
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *admin_shug
+      - *admin_shugbook
+      - *admin_mac
