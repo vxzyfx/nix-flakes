@@ -2,14 +2,27 @@
   pkgs,
   lib,
   config,
-  systemModules,
   ...
 }:
 with lib;
 
 let
   cfg = config.home-modules.shell;
+  shellAliases = {
+    ls = "ls --color";
+  };
 in {
+  options.home-modules.shell.shellAliases = mkOption {
+      type = with types; attrsOf str;
+      default = {};
+      example = literalExpression ''
+        {
+          g = "git";
+          "..." = "cd ../..";
+        }
+      '';
+      description = "shell别名";
+  };
   options.home-modules.shell.bash = {
     enable = mkEnableOption "启用bash";
     enableCompletion = mkOption {
@@ -29,6 +42,9 @@ in {
     };
   };
   config = mkMerge [
+  {
+    home.shellAliases = shellAliases // cfg.shellAliases;
+  }
   (mkIf cfg.bash.enable {
     programs.bash = {
       enable = mkDefault cfg.bash.enable;
