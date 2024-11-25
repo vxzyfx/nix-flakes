@@ -28,7 +28,7 @@
     username = "shug";
     home-modules = ({ sops-nix, config, vars, ...}: {
       imports = [ sops-nix.homeManagerModules.sops ];
-      sops.defaultSopsFile = ../../secrets + "/${vars.hostname}.yaml";
+      sops.defaultSopsFile = ../secrets + "/${vars.hostname}.yaml";
       sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
       sops.secrets."ssh/config" = {
         path = "${config.home.homeDirectory}/.ssh/config";
