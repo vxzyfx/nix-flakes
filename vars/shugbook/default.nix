@@ -1,32 +1,28 @@
+let
+  sopsModules = import ./sops.nix;
+in
 {
   system = "x86_64-linux";
   modules = ({pkgs, ...}: {
     imports = [
       ./hardware.nix
+      sopsModules.modules
     ];
     modules.gui.font.enable = true;
     modules.nixos.boot.systemd.enable = true;
     modules.nixos.virt.enable = true;
     modules.nixos.logid.enable = true;
     modules.nixos.desktop.enable = true;
+    modules.tui.sops.enable = true;
     modules.tui.openssh.enable = true;
     modules.tui.lang.enableAll = true;
 
     networking.useDHCP = false;
+    networking.resolvconf.enable = false;
     networking.wireless.iwd.enable = true;
     boot.blacklistedKernelModules = [ "nouveau" ];
     systemd.network.enable = true;
     services.resolved.enable = false;
-    networking.nameservers = [ "192.168.21.1" ];
-    systemd.network.networks.wlan0 = {
-      enable = true;
-      matchConfig = {
-        Name = "wlan0";
-      };
-      name = "wlan0";
-      gateway =  [ "192.168.21.1" ];
-      address = [ "192.168.21.91/24" ];
-    };
     users.users.shug = {
       isNormalUser = true;
       extraGroups = [ "wheel" "audio" "video" "lp" "kvm" "uucp" "input" "seat" "dialout" "qemu-libvirtd" "libvirtd" ];
@@ -35,6 +31,9 @@
   users.shug = {
     username = "shug";
     home-modules = ({...}: {
+      imports = [
+        sopsModules.home-modules
+      ];
       home-modules.direnv.enable = true;
       home-modules.direnv.enableBashIntegration = true;
       home-modules.git.enable = true;

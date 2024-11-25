@@ -15,6 +15,7 @@
         "firefox"
       ];
     };
+    modules.tui.sops.enable = true;
     modules.tui.openssh.enable = true;
     modules.tui.lang.enableAll = true;
     modules.tui.lang.js.package = with pkgs; [
@@ -25,7 +26,25 @@
   });
   users.shug = {
     username = "shug";
-    home-modules = ({...}: {
+    home-modules = ({ sops-nix, config, vars, ...}: {
+      imports = [ sops-nix.homeManagerModules.sops ];
+      sops.defaultSopsFile = ../../secrets + "/${vars.hostname}.yaml";
+      sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+      sops.secrets."ssh/config" = {
+        path = "${config.home.homeDirectory}/.ssh/config";
+      };
+      sops.secrets."ssh/key1" = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519";
+      };
+      sops.secrets."ssh/pub1" = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
+      };
+      sops.secrets."ssh/key2" = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519_read";
+      };
+      sops.secrets."ssh/pub2" = {
+        path = "${config.home.homeDirectory}/.ssh/id_ed25519_read.pub";
+      };
       home-modules.direnv.enable = true;
       home-modules.direnv.enableZshIntegration = true;
       home-modules.git.enable = true;
