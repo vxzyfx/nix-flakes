@@ -55,6 +55,11 @@
       home-modules.starship.enableZshIntegration = true;
       home-modules.vscode.enable = true;
       home-modules.shell.zsh.enable = true;
+      home-modules.shell.sessionVariables = {
+        LANG = "en_US.UTF-8";
+        GRADLE_USER_HOME = "${config.home.homeDirectory}/Code/lib/gradle";
+        CARGO_HOME = "${config.home.homeDirectory}/Code/lib/cargo";
+      };
       home-modules.k8s.kubectl.enable = true;
       home-modules.k8s.kubectl.enableZshIntegration = true;
       home-modules.k8s.helm.enable = true;
