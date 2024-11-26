@@ -8,7 +8,6 @@
       masApps = {
         Xcode = 497799835;
         WeChat = 836500024;
-        QQMusic = 595615424;
         Amphetamine = 937984704; # 管理熄屏时间
       };
       brews = [
