@@ -12,6 +12,14 @@ let
     ls = "ls --color";
   };
 in {
+  options.home-modules.shell.sessionVariables = mkOption {
+      type = types.attrs;
+      default = {};
+      example = {
+        LANG = "en_US.UTF-8";
+      };
+      description = "环境变量";
+  };
   options.home-modules.shell.shellAliases = mkOption {
       type = with types; attrsOf str;
       default = {};
@@ -44,17 +52,22 @@ in {
   config = mkMerge [
   {
     home.shellAliases = shellAliases // cfg.shellAliases;
+    home-modules.shell.sessionVariables = mkDefault {
+      LANG = "en_US.UTF-8";
+    };
   }
   (mkIf cfg.bash.enable {
     programs.bash = {
       enable = mkDefault cfg.bash.enable;
       enableCompletion = mkDefault cfg.bash.enableCompletion;
+      sessionVariables = cfg.sessionVariables;
     };
   })
   (mkIf cfg.zsh.enable {
     programs.zsh = {
       enable = mkDefault cfg.zsh.enable;
       enableCompletion = mkDefault cfg.zsh.enableCompletion;
+      sessionVariables = cfg.sessionVariables;
       initExtra = mkBefore ''
         bindkey  "^[[H"   beginning-of-line
         bindkey  "^[[F"   end-of-line
