@@ -30,9 +30,12 @@ in
   });
   users.shug = {
     username = "shug";
-    home-modules = ({...}: {
+    home-modules = ({ pkgs, ...}: {
       imports = [
         sopsModules.home-modules
+      ];
+      home.packages = with pkgs; [
+        remmina
       ];
       home-modules.direnv.enable = true;
       home-modules.direnv.enableBashIntegration = true;
