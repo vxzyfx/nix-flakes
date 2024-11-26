@@ -12,6 +12,11 @@ let
 in {
   options.modules.tui.homebrew = {
     enable = mkEnableOption "nix管理homebrew";
+    masApps = mkOption {
+      type = types.attrsOf types.ints.positive;
+      default = {};
+      description = "通过masApps按照App Store的软件";
+    };
     autoUpdate = mkOption {
       type = types.bool;
       default = true;
@@ -41,6 +46,7 @@ in {
   };
   config = vars.onlyDarwinOptionalAttrs (mkIf cfg.enable {
     homebrew.enable = mkDefault true;
+    homebrew.masApps = mkDefault cfg.masApps;
     homebrew.onActivation.autoUpdate = mkDefault cfg.autoUpdate;
     homebrew.onActivation.upgrade = mkDefault cfg.upgrade;
     homebrew.onActivation.cleanup = mkDefault cfg.cleanup;

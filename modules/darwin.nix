@@ -13,6 +13,7 @@ in {
   config = vars.onlyDarwinOptionalAttrs (mkIf cfg.isDarwin {
     system.defaults = {
       dock.autohide = true;
+      hitoolbox.AppleFnUsageType = "Change Input Source"; # Fn键修改输入法
       finder = {
           _FXShowPosixPathInTitle = true;
           AppleShowAllExtensions = true;
