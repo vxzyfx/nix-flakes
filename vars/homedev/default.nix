@@ -3,7 +3,7 @@ let
 in
 {
   system = "x86_64-linux";
-  modules = ({pkgs, impermanence, ...}: {
+  modules = ({ pkgs, impermanence, config, ...}: {
     imports = [
       ./hardware.nix
       impermanence.nixosModules.impermanence
@@ -23,6 +23,27 @@ in
     systemd.network.enable = true;
     services.resolved.enable = false;
     services.adguardhome.enable = true;
+    modules.nixos.traefik = {
+      enable = true;
+      staticConfigOptions = {
+        entryPoints = {
+          web = {
+            address = ":80";
+          };
+          websecure = {
+            address = ":443";
+          };
+        };
+        certificatesResolvers.myresolver.acme = {
+          dnsChallenge = {
+            provider = "cloudflare";
+          };
+          storage = "${config.modules.nixos.traefik.dataDir}/acme.json";
+        };
+      };
+      environmentFiles = [ "/run/secrets/traefik_env" ];
+      dynamicConfigFile = "/etc/traefik/config.yaml";
+    };
     users.mutableUsers = false;
     users.users.dev = {
       isNormalUser = true;
@@ -35,6 +56,7 @@ in
       directories = [
         "/var/lib/nixos"
         "/var/lib/sing-box"
+        "${config.services.traefik.dataDir}"
       ];
       files = [
         "/etc/machine-id"

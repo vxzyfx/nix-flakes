@@ -39,7 +39,7 @@ in
           dnsChallenge = {
             provider = "cloudflare";
           };
-          storage = "${config.services.traefik.dataDir}/acme.json";
+          storage = "${config.modules.nixos.traefik.dataDir}/acme.json";
         };
       };
       environmentFiles = [ "/run/secrets/traefik_env" ];

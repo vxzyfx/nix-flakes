@@ -45,6 +45,13 @@
       mode = "0444";
       path = "/etc/resolv.conf";
     };
+    sops.secrets.traefik_env = {
+      mode = "0444";
+    };
+    sops.secrets.traefik_yaml = {
+      mode = "0444";
+      path = "/etc/traefik/config.yaml";
+    };
   });
   home-modules = ({ sops-nix, config, vars, ... }: {
     imports = [ sops-nix.homeManagerModules.sops ];
