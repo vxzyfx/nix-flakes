@@ -1,7 +1,9 @@
 keys:
   - &admin_shug age1ptsvfmvellvya89lfc3a2y772f7unasm476uc5mxk7kjdcj7a3cqnyzats
-  - &admin_shugbook age1wxhnvs2c3ls42grgdtepsr23ewahq63xntc5fu9zxpgkgh666exsk3ztsa
+  - &admin_shugbook age1rueeayg0ax7erd7uhvtuhj0zhaufhmdrjmuwl2qwlhc2uef3s4mqkl3njp
   - &admin_mac age1t7rtwguuhe7emtec4fegw9lg46lw0cye46ygr7j88x9kgkyw3uwqfnnlny
+  - &admin_homedev age1sua203vwnuy8kkfpms9rs7pnn36rsrmzypgd3qs04rcfdcnzfdksf94pf0
+  - &admin_workdev age145mp6sjq8cpj4l8f4ylfvrzjlna4hwuqz6433xagtnpk5m3jp3wqdn978s
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -9,3 +11,5 @@ creation_rules:
       - *admin_shug
       - *admin_shugbook
       - *admin_mac
+      - *admin_homedev
+      - *admin_workdev
