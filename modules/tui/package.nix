@@ -3,12 +3,13 @@
   lib,
   config,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.tui.package;
-in {
+in
+{
   options.modules.tui.package = {
     enable = mkOption {
       type = types.bool;
@@ -19,7 +20,7 @@ in {
     packages = mkOption {
       type = types.listOf types.package;
       description = "通用软件包";
-      default = with pkgs;[
+      default = with pkgs; [
         git
         wget
         vim
@@ -35,7 +36,7 @@ in {
     packagesExtra = mkOption {
       type = types.listOf types.package;
       description = "额外的软件包";
-      default = [];
+      default = [ ];
     };
   };
   config = mkIf cfg.enable {

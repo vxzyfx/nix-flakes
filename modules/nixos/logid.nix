@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.nixos.logid;
-in {
+in
+{
   options.modules.nixos.logid = {
     enable = mkEnableOption "Logitech 设备驱动程序";
   };
@@ -21,7 +22,7 @@ in {
       serviceConfig = {
         ExecStart = "/run/current-system/sw/bin/logid";
       };
-      wantedBy =[ "graphical.target" ];
+      wantedBy = [ "graphical.target" ];
     };
     environment.etc."logid.cfg".text = ''
       devices: (
@@ -40,7 +41,7 @@ in {
               target: false;
           };
           dpi: 1000;
-      
+
           buttons: (
               {
                   cid: 0xc3;

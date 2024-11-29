@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.nixos.virt;
-in {
+in
+{
   options.modules.nixos.virt = {
     enable = mkEnableOption "开启kvm虚拟化";
     enableVirtManager = mkEnableOption "启用virt-manager";
@@ -29,12 +30,15 @@ in {
           swtpm.enable = true;
           ovmf = {
             enable = true;
-              packages = [(pkgs.OVMF.override {
-              secureBoot = true;
-              tpmSupport = true;
-            }).fd];
+            packages = [
+              (pkgs.OVMF.override {
+                secureBoot = true;
+                tpmSupport = true;
+              }).fd
+            ];
           };
         };
       };
-    })];
+    })
+  ];
 }

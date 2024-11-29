@@ -9,13 +9,14 @@ with lib;
 
 let
   cfg = config.modules.tui.sops;
-in {
+in
+{
   options.modules.tui.sops = {
     enable = mkEnableOption "sops软件";
   };
   config = mkIf cfg.enable {
-      environment.systemPackages = [
-        pkgs.sops
-      ];
-    };
+    environment.systemPackages = [
+      pkgs.sops
+    ];
+  };
 }

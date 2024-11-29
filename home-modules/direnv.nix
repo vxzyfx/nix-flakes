@@ -9,7 +9,8 @@ with lib;
 
 let
   cfg = config.home-modules.direnv;
-in {
+in
+{
   options.home-modules.direnv = {
     enable = mkEnableOption "环境切换器direnv";
     enableBashIntegration = mkEnableOption "集成bash";

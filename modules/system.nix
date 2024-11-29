@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.system;
-in {
+in
+{
   options.modules.system = {
     stateVersion = mkOption {
       type = types.str;
@@ -70,7 +71,10 @@ in {
     (vars.onlyLinuxOptionalAttrs {
       system.stateVersion = mkDefault cfg.stateVersion;
       i18n.defaultLocale = mkDefault "en_US.UTF-8";
-      i18n.supportedLocales = mkDefault [ "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
+      i18n.supportedLocales = mkDefault [
+        "en_US.UTF-8/UTF-8"
+        "zh_CN.UTF-8/UTF-8"
+      ];
     })
     {
       time.timeZone = mkDefault cfg.timeZone;

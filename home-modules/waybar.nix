@@ -9,7 +9,8 @@ with lib;
 
 let
   cfg = config.home-modules.waybar;
-in {
+in
+{
   options.home-modules.waybar = {
     enable = mkEnableOption "高度可定制的 Wayland 状态栏";
   };
@@ -22,9 +23,21 @@ in {
           position = "top";
           height = 26;
           spacing = 4;
-          modules-left = ["hyprland/workspaces" "idle_inhibitor" "wireplumber" "backlight" "network"];
-          modules-center = ["hyprland/window"];
-          modules-right = ["cpu" "memory" "temperature" "battery" "clock"];
+          modules-left = [
+            "hyprland/workspaces"
+            "idle_inhibitor"
+            "wireplumber"
+            "backlight"
+            "network"
+          ];
+          modules-center = [ "hyprland/window" ];
+          modules-right = [
+            "cpu"
+            "memory"
+            "temperature"
+            "battery"
+            "clock"
+          ];
           "hyprland/workspaces" = {
             format = "{}";
           };
@@ -38,14 +51,28 @@ in {
           wireplumber = {
             format = "{volume}% {icon}";
             format-muted = "";
-            format-icons = ["" "" ""];
+            format-icons = [
+              ""
+              ""
+              ""
+            ];
             on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             max-volume = 150;
             scroll-step = 0.2;
           };
           backlight = {
             format = "{percent}% {icon}";
-            format-icons = ["" "" "" "" "" "" "" "" ""];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
           };
           network = {
             format-wifi = "{essid} ({signalStrength}%)  ";
@@ -69,7 +96,11 @@ in {
           temperature = {
             critical-threshold = 80;
             format = "{temperatureC}°C {icon}";
-            format-icons = ["" "" ""];
+            format-icons = [
+              ""
+              ""
+              ""
+            ];
           };
           battery = {
             states = {
@@ -83,7 +114,13 @@ in {
             format-alt = "{time} {icon}";
             format-good = "";
             format-full = "";
-            format-icons = ["" "" "" "" ""];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
           };
           clock = {
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
@@ -108,12 +145,12 @@ in {
         @define-color base0D #7cafc2;
         @define-color base0E #ba8baf;
         @define-color base0F #a16946;
-        
+
         * {
           transition: none;
           box-shadow: none;
         }
-        
+
         #waybar {
           font-family: 'JetBrainsMono Nerd Font', sans-serif;
           font-size: 12px;
@@ -121,29 +158,29 @@ in {
           color: @base04;
           background: @base01;
         }
-        
+
         #workspaces {
           margin: 0 4px;
         }
-        
+
         #workspaces button {
           margin: 0px 0;
           padding: 0 4px;
           color: @base05;
         }
-        
+
         #workspaces button.visible {
         }
-        
+
         #workspaces button.active {
           border-radius: 4px;
           background-color: @base02;
         }
-        
+
         #workspaces button.urgent {
           color: rgba(238, 46, 36, 1);
         }
-        
+
         #mode, #battery, #cpu, #memory, #network, #wireplumber, #idle_inhibitor, #backlight, #clock, #temperature {
           margin: 0px 2px;
           padding: 0 6px;
@@ -151,21 +188,21 @@ in {
           border-radius: 4px;
           min-width: 20px;
         }
-        
+
         #wireplumber.muted {
           color: @base0F;
         }
-        
+
         #clock {
           margin-left: 0px;
           margin-right: 4px;
           background-color: transparent;
         }
-        
+
         #temperature.critical {
           color: @base0F;
         }
-        
+
         #window {
           font-weight: 400;
           font-family: sans-serif;

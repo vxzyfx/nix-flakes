@@ -9,7 +9,8 @@ with lib;
 
 let
   cfg = config.home-modules.kitty;
-in {
+in
+{
   options.home-modules.kitty = {
     enable = mkEnableOption "kitty终端软件";
   };

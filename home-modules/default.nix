@@ -1,3 +1,4 @@
-{mylib, systemModules, ...}: {
+{ mylib, systemModules, ... }:
+{
   imports = mylib.scanPaths ./.;
 }

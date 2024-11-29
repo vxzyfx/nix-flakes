@@ -1,4 +1,11 @@
-{pkgs, vars, lib, options, config, ...}:
+{
+  pkgs,
+  vars,
+  lib,
+  options,
+  config,
+  ...
+}:
 
 with lib;
 let
@@ -9,7 +16,7 @@ in
     enable = mkEnableOption "Mac系统下的平铺窗口管理器";
     settingsExtra = lib.mkOption {
       type = types.attrs;
-      default = {};
+      default = { };
       description = ''
         AeroSpace配置
         <link xlink:href="https://nikitabobko.github.io/AeroSpace/guide#configuring-aerospace"/>
@@ -19,7 +26,7 @@ in
       default = {
         gaps = {
           inner.horizontal = 3;
-          inner.vertical =   3;
+          inner.vertical = 3;
           outer.left = 6;
           outer.bottom = 6;
           outer.top = 6;
@@ -75,13 +82,34 @@ in
           alt-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty -d ~";
         };
         mode.service.binding = {
-          r = ["flatten-workspace-tree" "mode main"];
-          f = ["layout floating tiling" "mode main"];
-          backspace = ["close-all-windows-but-current" "mode main"];
-          alt-shift-h = ["join-with left" "mode main"];
-          alt-shift-j = ["join-with down" "mode main"];
-          alt-shift-k = ["join-with up" "mode main"];
-          alt-shift-l = ["join-with right" "mode main"];
+          r = [
+            "flatten-workspace-tree"
+            "mode main"
+          ];
+          f = [
+            "layout floating tiling"
+            "mode main"
+          ];
+          backspace = [
+            "close-all-windows-but-current"
+            "mode main"
+          ];
+          alt-shift-h = [
+            "join-with left"
+            "mode main"
+          ];
+          alt-shift-j = [
+            "join-with down"
+            "mode main"
+          ];
+          alt-shift-k = [
+            "join-with up"
+            "mode main"
+          ];
+          alt-shift-l = [
+            "join-with right"
+            "mode main"
+          ];
         };
         mode.resize.binding = {
           minus = "resize smart -50";
@@ -96,15 +124,17 @@ in
         #  "if.app-id = 'org.mozilla.firefox' run = 'move-node-to-workspace B'"
         # ];
       };
-    }; 
-  };
-  config = vars.onlyDarwinOptionalAttrs (mkIf cfg.enable {
-    services.aerospace = {
-      enable = mkDefault true;
-      settings = mkDefault (mkMerge [
-        cfg.settings
-        cfg.settingsExtra
-      ]);
     };
-  });
+  };
+  config = vars.onlyDarwinOptionalAttrs (
+    mkIf cfg.enable {
+      services.aerospace = {
+        enable = mkDefault true;
+        settings = mkDefault (mkMerge [
+          cfg.settings
+          cfg.settingsExtra
+        ]);
+      };
+    }
+  );
 }

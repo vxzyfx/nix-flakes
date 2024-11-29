@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.nixos.tmp;
-in {
+in
+{
   options.modules.nixos.tmp = {
     enable = mkOption {
       type = types.bool;

@@ -9,7 +9,8 @@ with lib;
 
 let
   cfg = config.home-modules.neovim;
-in {
+in
+{
   options.home-modules.neovim = {
     enable = mkEnableOption "neovim软件";
   };
@@ -104,9 +105,9 @@ in {
               local line, col = unpack(vim.api.nvim_win_get_cursor(0))
               return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
-    
+
             local cmp = require("cmp")
-    
+
             opts.mapping = vim.tbl_extend("force", opts.mapping, {
               ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then

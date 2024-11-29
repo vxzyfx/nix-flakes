@@ -9,7 +9,8 @@ with lib;
 
 let
   cfg = config.home-modules.mako;
-in {
+in
+{
   options.home-modules.mako = {
     enable = mkEnableOption "Wayland 通知守护进程";
   };

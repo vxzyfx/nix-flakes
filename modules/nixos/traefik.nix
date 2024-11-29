@@ -4,26 +4,31 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.nixos.traefik;
-  jsonValue = with types;
+  jsonValue =
+    with types;
     let
-      valueType = nullOr (oneOf [
-        bool
-        int
-        float
-        str
-        (lazyAttrsOf valueType)
-        (listOf valueType)
-      ]) // {
-        description = "JSON value";
-        emptyValue.value = { };
-      };
-    in valueType;
-in {
+      valueType =
+        nullOr (oneOf [
+          bool
+          int
+          float
+          str
+          (lazyAttrsOf valueType)
+          (listOf valueType)
+        ])
+        // {
+          description = "JSON value";
+          emptyValue.value = { };
+        };
+    in
+    valueType;
+in
+{
   options.modules.nixos.traefik = {
     enable = mkEnableOption "HTTP服务器";
     package = mkPackageOption pkgs "traefik" { };
@@ -32,7 +37,9 @@ in {
         端点等静态配置
       '';
       type = jsonValue;
-      default = { entryPoints.http.address = ":80"; };
+      default = {
+        entryPoints.http.address = ":80";
+      };
       example = {
         entryPoints.web.address = ":8080";
         entryPoints.http.address = ":80";
@@ -55,7 +62,7 @@ in {
       '';
     };
     environmentFiles = mkOption {
-      default = [];
+      default = [ ];
       type = types.listOf types.path;
       example = [ "/run/secrets/traefik.env" ];
       description = ''
@@ -74,4 +81,3 @@ in {
     };
   };
 }
-

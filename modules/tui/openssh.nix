@@ -1,4 +1,11 @@
-{pkgs, vars, lib, options, config, ...}:
+{
+  pkgs,
+  vars,
+  lib,
+  options,
+  config,
+  ...
+}:
 
 with lib;
 let
@@ -6,8 +13,14 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBCrDpZKEO9ct8HhSDCzvDwWYHYqrThawHTPJzZyACj5 vxzyfx@gmail.com"
   ];
   cfg = config.modules.tui.openssh;
-  users = lib.attrsets.filterAttrs (n: v: let active = v.enableKeys or true; in active) vars.users;
-  defaultIncludeKeys = true; 
+  users = lib.attrsets.filterAttrs (
+    n: v:
+    let
+      active = v.enableKeys or true;
+    in
+    active
+  ) vars.users;
+  defaultIncludeKeys = true;
 in
 {
   options.modules.tui.openssh = {
@@ -21,14 +34,20 @@ in
     };
   };
   config = mkMerge [
-    (vars.onlyLinuxOptionalAttrs (mkIf cfg.enable {
-      services.openssh.enable = mkDefault true;
-    }))
+    (vars.onlyLinuxOptionalAttrs (
+      mkIf cfg.enable {
+        services.openssh.enable = mkDefault true;
+      }
+    ))
     (mkIf cfg.enableRootKey {
       users.users.root.openssh.authorizedKeys.keys = lib.mkBefore keys;
     })
-    (mkIf cfg.enable (mkMerge (lib.attrsets.mapAttrsToList (username: v: {
-      users.users."${username}".openssh.authorizedKeys.keys = lib.mkBefore keys;
-    }) users)))
+    (mkIf cfg.enable (
+      mkMerge (
+        lib.attrsets.mapAttrsToList (username: v: {
+          users.users."${username}".openssh.authorizedKeys.keys = lib.mkBefore keys;
+        }) users
+      )
+    ))
   ];
 }

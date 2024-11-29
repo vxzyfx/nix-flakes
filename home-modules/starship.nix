@@ -9,7 +9,8 @@ with lib;
 
 let
   cfg = config.home-modules.starship;
-in {
+in
+{
   options.home-modules.starship = {
     enable = mkEnableOption "shell提示";
     enableBashIntegration = mkEnableOption "集成bash";
@@ -24,7 +25,7 @@ in {
         add_newline = false;
         command_timeout = 1000;
         battery = {
-          disabled=true;
+          disabled = true;
         };
       };
     };

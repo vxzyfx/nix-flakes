@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.nixos.boot;
-in {
+in
+{
   options.modules.nixos.boot = {
     systemd.enable = mkEnableOption "systemd-boot启动";
     grub.enable = mkEnableOption "grub启动";
@@ -18,7 +19,7 @@ in {
       description = "grub启动硬盘, 如/dev/vda1";
     };
   };
-  config = mkMerge [ 
+  config = mkMerge [
     (mkIf cfg.systemd.enable {
       boot.loader.systemd-boot.enable = mkDefault true;
       boot.loader.systemd-boot.configurationLimit = mkDefault 5;

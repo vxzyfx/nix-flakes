@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.nixos.sing-box;
-in {
+in
+{
   options.modules.nixos.sing-box = {
     enable = mkEnableOption "sing-box代理";
     package = lib.mkPackageOption pkgs "sing-box" { };

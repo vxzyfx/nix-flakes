@@ -9,7 +9,8 @@ with lib;
 
 let
   cfg = config.home-modules.git;
-in {
+in
+{
   options.home-modules.git = {
     enable = mkEnableOption "启用git";
   };

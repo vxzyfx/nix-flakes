@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.modules.tui.lang;
-in {
+in
+{
   options.modules.tui.lang = {
     enableAll = mkEnableOption "启用所有语言";
     js.enable = mkEnableOption "启用nodejs";
@@ -79,39 +80,39 @@ in {
     };
   };
   config = mkMerge [
-  (mkIf cfg.enableAll {
-    modules.tui.lang.js.enable = mkDefault true;
-    modules.tui.lang.rust.enable = mkDefault true;
-    modules.tui.lang.python.enable = mkDefault true;
-    modules.tui.lang.go.enable = mkDefault true;
-    modules.tui.lang.dotnet.enable = mkDefault true;
-    modules.tui.lang.php.enable = mkDefault true;
-    modules.tui.lang.ruby.enable = mkDefault true;
-    modules.tui.lang.c.enable = mkDefault true;
-  })
-  (mkIf cfg.js.enable {
-    environment.systemPackages = cfg.js.package;
-  })
-  (mkIf cfg.rust.enable {
-    environment.systemPackages = cfg.rust.package;
-  })
-  (mkIf cfg.python.enable {
-    environment.systemPackages = cfg.python.package;
-  })
-  (mkIf cfg.go.enable {
-    environment.systemPackages = cfg.go.package;
-  })
-  (mkIf cfg.dotnet.enable {
-    environment.systemPackages = cfg.dotnet.package;
-  })
-  (mkIf cfg.php.enable {
-    environment.systemPackages = cfg.php.package;
-  })
-  (mkIf cfg.ruby.enable {
-    environment.systemPackages = cfg.ruby.package;
-  })
-  (mkIf cfg.c.enable {
-    environment.systemPackages = cfg.c.package;
-  })
+    (mkIf cfg.enableAll {
+      modules.tui.lang.js.enable = mkDefault true;
+      modules.tui.lang.rust.enable = mkDefault true;
+      modules.tui.lang.python.enable = mkDefault true;
+      modules.tui.lang.go.enable = mkDefault true;
+      modules.tui.lang.dotnet.enable = mkDefault true;
+      modules.tui.lang.php.enable = mkDefault true;
+      modules.tui.lang.ruby.enable = mkDefault true;
+      modules.tui.lang.c.enable = mkDefault true;
+    })
+    (mkIf cfg.js.enable {
+      environment.systemPackages = cfg.js.package;
+    })
+    (mkIf cfg.rust.enable {
+      environment.systemPackages = cfg.rust.package;
+    })
+    (mkIf cfg.python.enable {
+      environment.systemPackages = cfg.python.package;
+    })
+    (mkIf cfg.go.enable {
+      environment.systemPackages = cfg.go.package;
+    })
+    (mkIf cfg.dotnet.enable {
+      environment.systemPackages = cfg.dotnet.package;
+    })
+    (mkIf cfg.php.enable {
+      environment.systemPackages = cfg.php.package;
+    })
+    (mkIf cfg.ruby.enable {
+      environment.systemPackages = cfg.ruby.package;
+    })
+    (mkIf cfg.c.enable {
+      environment.systemPackages = cfg.c.package;
+    })
   ];
 }

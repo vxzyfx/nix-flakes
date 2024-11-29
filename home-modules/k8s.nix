@@ -4,12 +4,13 @@
   config,
   vars,
   ...
-}: 
+}:
 with lib;
 
 let
   cfg = config.home-modules.k8s;
-in {
+in
+{
   options.home-modules.k8s = {
     kubectl.enable = mkEnableOption "kubectl软件";
     kubectl.package = mkOption {
