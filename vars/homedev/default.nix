@@ -62,6 +62,10 @@ in
       environment.persistence."/nix/persistent" = {
         hideMounts = true;
         directories = [
+          {
+            directory = "/var/lib/private";
+            mode = "0700";
+          }
           "/var/lib/nixos"
           "/var/lib/sing-box"
           "${config.services.traefik.dataDir}"
@@ -72,7 +76,6 @@ in
           "/etc/ssh/ssh_host_ed25519_key"
           "/etc/ssh/ssh_host_rsa_key.pub"
           "/etc/ssh/ssh_host_rsa_key"
-          "/var/lib/private/AdGuardHome/AdGuardHome.yaml"
         ];
       };
     }
