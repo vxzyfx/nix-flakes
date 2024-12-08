@@ -14,6 +14,7 @@
       sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
       sops.secrets.sing-box = {
         mode = "0444";
+        restartUnits = [ "sing-box.service" ];
         path = "/etc/sing-box/config.json";
       };
       sops.secrets.network0 = {
