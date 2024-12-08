@@ -26,6 +26,7 @@ in
         hide_window_decorations = "yes";
         macos_quit_when_last_window_closed = "yes";
         window_padding_width = 6;
+        clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
       };
     };
   };

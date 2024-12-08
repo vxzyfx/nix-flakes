@@ -25,11 +25,7 @@ in
       [
         (mkIf cfg.yahei.enable vistafonts-chs)
         font-awesome
-        (nerdfonts.override {
-          fonts = [
-            "JetBrainsMono"
-          ];
-        })
+        nerd-fonts.jetbrains-mono
       ]
       ++ cfg.extFonts;
   };
