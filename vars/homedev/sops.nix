@@ -12,6 +12,11 @@
       sops.age.keyFile = "/nix/persistent/var/lib/sops-nix/keys.txt";
       # sops.age.generateKey = true;
       sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      sops.secrets.frpc = {
+        mode = "0444";
+        restartUnits = [ "frpc.service" ];
+        path = "/etc/frp/frpc.toml";
+      };
       sops.secrets.sing-box = {
         mode = "0444";
         restartUnits = [ "sing-box.service" ];

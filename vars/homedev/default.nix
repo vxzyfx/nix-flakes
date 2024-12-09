@@ -25,6 +25,7 @@ in
 
       modules.nixos.tmp.enable = false;
       modules.nixos.sing-box.enable = true;
+      modules.nixos.frp.enableClient = true;
       networking.useDHCP = false;
       networking.resolvconf.enable = false;
       networking.firewall.enable = false;
