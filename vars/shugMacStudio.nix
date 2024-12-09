@@ -26,13 +26,6 @@
       modules.tui.sops.enable = true;
       modules.tui.openssh.enable = true;
       modules.tui.lang.enableAll = true;
-      modules.tui.lang.js.package = with pkgs; [
-        (nodejs_22.overrideAttrs (
-          finalAttrs: previousAttrs: {
-            doCheck = false;
-          }
-        ))
-      ];
     }
   );
   users.shug = {
