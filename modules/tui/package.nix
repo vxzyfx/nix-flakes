@@ -25,7 +25,7 @@ in
         wget
         vim
         curlHTTP3
-        neofetch
+        fastfetch
         tree
         file
         rar
