@@ -3,18 +3,21 @@
   lib,
   config,
   vars,
+  mylib,
   ...
 }:
 with lib;
 
 let
   cfg = config.home-modules.neovim;
+  packages = mylib.packages { inherit pkgs lib; };
 in
 {
   options.home-modules.neovim = {
     enable = mkEnableOption "neovim软件";
   };
   config = mkIf cfg.enable {
+    home.packages = vars.onlyDarwinOptionals [ packages.im-select ];
     programs.neovim = {
       enable = true;
       extraLuaConfig = ''
@@ -84,11 +87,14 @@ in
           config = function()
             local os = determine_os()
             local default_im_select = "com.apple.keylayout.ABC"
+            local default_command = "im-select"
             if os == "Linux" then
               default_im_select = "keyboard-us"
+              default_command = "fcitx5-remote"
             end
             require("im_select").setup({
               default_im_select = default_im_select,
+              default_command = default_command,
             })
           end,
         },
