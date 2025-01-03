@@ -39,6 +39,15 @@
     ];
   };
 
+  fileSystems."/var/lib/libvirt/images" = {
+    device = "/dev/disk/by-uuid/fb035fe5-2b04-4a85-88fa-04e78090bf87";
+    fsType = "btrfs";
+    options = [
+      "subvol=@var/images"
+      "compress=zstd"
+    ];
+  };
+
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/fb035fe5-2b04-4a85-88fa-04e78090bf87";
     fsType = "btrfs";

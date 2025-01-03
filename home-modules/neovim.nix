@@ -162,7 +162,10 @@ in
           optional = true,
           lazy = true,
           ft = "rust" ,
-          keys = { { "<leader>mr", function() vim.cmd.RustLsp('runnables') end, ft = "rust", desc = "Run Target" } },
+          keys = { 
+            { "<leader>mt", function() vim.cmd.RustTest() end, ft = "rust", desc = "Run Test" },
+            { "<leader>mr", function() vim.cmd.RustLsp('runnables') end, ft = "rust", desc = "Run Target" } 
+          },
         },
         {
           "Civitasv/cmake-tools.nvim",

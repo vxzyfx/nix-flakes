@@ -51,7 +51,7 @@ in
           decoration = {
             rounding = 4;
             active_opacity = 1.0;
-            inactive_opacity = 0.8;
+            inactive_opacity = 1.0;
 
             shadow = {
               enabled = true;
@@ -104,6 +104,10 @@ in
             preserve_split = true;
           };
           "$mod" = "SUPER";
+          bindm = [
+            "$mod, mouse:272, movewindow"
+            "$mod, mouse:273, resizewindow"
+          ];
           bind =
             [
               "$mod, W, workspace, name:w"
