@@ -16,6 +16,14 @@
         mode = "0444";
         path = "/etc/systemd/network/eth0.network";
       };
+      sops.secrets.brnetwork = {
+        mode = "0444";
+        path = "/etc/systemd/network/br0.network";
+      };
+      sops.secrets.brnetdev = {
+        mode = "0444";
+        path = "/etc/systemd/network/br0.netdev";
+      };
       sops.secrets.resolv = {
         mode = "0444";
         path = "/etc/resolv.conf";

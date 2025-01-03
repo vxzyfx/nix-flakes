@@ -26,18 +26,6 @@ in
       boot.blacklistedKernelModules = [ "nouveau" ];
       systemd.network.enable = true;
       services.resolved.enable = false;
-      systemd.network.netdevs."br0".netdevConfig = {
-        Name = "br0";
-        Kind = "bridge";
-      };
-      systemd.network.networks."br0" = {
-        name = "br0";
-        networkConfig = {
-          DHCPServer = "yes";
-          IPMasquerade = "both";
-          Address = "192.168.2.1/24";
-        };
-      };
       users.users.shug = {
         isNormalUser = true;
         extraGroups = [
