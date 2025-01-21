@@ -119,10 +119,26 @@ in
         on-focus-changed = [
           "move-mouse window-lazy-center"
         ];
-        # on-window-detected = [
-        #  "if.app-id = 'com.google.Chrome' run = 'move-node-to-workspace B'"
-        #  "if.app-id = 'org.mozilla.firefox' run = 'move-node-to-workspace B'"
-        # ];
+        on-window-detected = [
+          {
+            check-further-callbacks = false;
+            "if" = {
+              app-id = "com.google.Chrome";
+            };
+            run = [
+              "move-node-to-workspace B"
+            ];
+          }
+          {
+            check-further-callbacks = false;
+            "if" = {
+              app-id = "com.apple.finder";
+            };
+            run = [
+              "layout floating"
+            ];
+          }
+        ];
       };
     };
   };
