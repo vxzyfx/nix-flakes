@@ -62,13 +62,19 @@ in
         home-modules.kitty.enable = true;
         home-modules.starship.enable = true;
         home-modules.starship.enableBashIntegration = true;
-        home-modules.vscode.enable = true;
         home-modules.shell.bash.enable = true;
         home-modules.hyprland.enable = true;
         home-modules.launcher.fuzzel.enable = true;
         home-modules.waybar.enable = true;
         home-modules.mako.enable = true;
         home-modules.neovim.enable = true;
+        home-modules.vscode = {
+          enable = true;
+          extensions = {
+            rust = true;
+            web = true;
+          };
+        };
 
         programs.git.userName = "shug";
         programs.git.userEmail = "vxzyfx@gmail.com";
