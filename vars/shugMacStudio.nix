@@ -58,8 +58,14 @@
         home-modules.kitty.enable = true;
         home-modules.starship.enable = true;
         home-modules.starship.enableZshIntegration = true;
-        home-modules.vscode.enable = true;
         home-modules.shell.zsh.enable = true;
+        home-modules.vscode = {
+          enable = true;
+          extensions = {
+            rust = true;
+            web = true;
+          };
+        };
         home-modules.shell.sessionVariables = {
           LANG = "en_US.UTF-8";
           GRADLE_USER_HOME = "${config.home.homeDirectory}/Code/lib/gradle";
