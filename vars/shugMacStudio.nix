@@ -15,17 +15,19 @@
         brews = [
           "openjdk@17"
           "openjdk@21"
+          "scrcpy"
         ];
         casks = [
           "arduino-ide"
           "wireshark"
           "google-chrome"
           "firefox"
+          "android-platform-tools"
         ];
       };
       modules.tui.sops.enable = true;
       modules.tui.openssh.enable = true;
-      modules.tui.lang.enableAll = true;
+      # modules.tui.lang.enableAll = true;
     }
   );
   users.shug = {

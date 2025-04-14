@@ -16,19 +16,24 @@ let
       })
     else
       pkgs.vscode;
-  rustExtensions =
+  rustExtensions = optionals cfg.extensions.rust (
     with pkgs.vscode-extensions;
-    optionals cfg.extensions.rust [
+    [
       rust-lang.rust-analyzer
-    ];
-  webExtensions =
+    ]
+  );
+  webExtensions = optionals cfg.extensions.web (
     with pkgs.vscode-extensions;
-    optionals cfg.extensions.web [
+    [
       vue.volar
       bradlc.vscode-tailwindcss
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
-    ];
+    ]
+  );
+  commonExtensions = with pkgs.vscode-extensions; [
+    fill-labs.dependi
+  ];
 in
 {
   options.home-modules.vscode = {
@@ -47,7 +52,7 @@ in
     programs.vscode = {
       enable = true;
       package = cfg.package;
-      extensions = rustExtensions ++ webExtensions;
+      profiles.default.extensions = commonExtensions ++ rustExtensions ++ webExtensions;
     };
   };
 }

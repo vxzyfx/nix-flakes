@@ -63,7 +63,6 @@ in
   };
   config = mkMerge [
     (vars.onlyDarwinOptionalAttrs {
-      services.nix-daemon.enable = mkDefault true;
       networking.computerName = mkDefault cfg.hostname;
       system.defaults.smb.NetBIOSName = mkDefault cfg.hostname;
       system.stateVersion = mkDefault cfg.darwinStateVersion;
