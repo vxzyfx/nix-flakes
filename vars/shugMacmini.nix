@@ -7,6 +7,10 @@
       modules.gui.font.enable = true;
       modules.tui.homebrew = {
         enable = true;
+        masApps = {
+          Xcode = 497799835;
+          Amphetamine = 937984704;
+        };
         brews = [
           "openjdk@17"
           "openjdk@21"
@@ -19,14 +23,6 @@
       };
       modules.tui.sops.enable = true;
       modules.tui.openssh.enable = true;
-      modules.tui.lang.enableAll = true;
-      modules.tui.lang.js.package = with pkgs; [
-        (nodejs_22.overrideAttrs (
-          finalAttrs: previousAttrs: {
-            doCheck = false;
-          }
-        ))
-      ];
     }
   );
   users.shug = {
