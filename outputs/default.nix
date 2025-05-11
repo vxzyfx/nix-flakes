@@ -73,15 +73,28 @@ let
       };
     };
   });
-  mergeCheck = set1: set2: lib.mergeAttrsWithFunc (s1: s2: s1 // s2) set1 set2;
-in
-{
-  inherit nixosConfigurations darwinConfigurations;
-  checks = mergeCheck hookCheck { };
-  devShells = forAllSystems (system: {
+  mergeAttr = set1: set2: lib.mergeAttrsWithFunc (s1: s2: s1 // s2) set1 set2;
+  overlays = final: prev: rec {
+    rustToolchain = final.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
+    nodejs = prev.nodejs;
+    yarn = (prev.yarn.override { inherit nodejs; });
+  };
+  forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs supportedSystems (system: f {
+    pkgs = import inputs.nixpkgs {
+      inherit system;
+      overlays = [ inputs.rust-overlay.overlays.default overlays ];
+    };
+  });
+  shells = forEachSupportedSystem ( args: import ../shell args);
+  git-hook = forAllSystems (system: {
     git-hook = nixpkgs.legacyPackages.${system}.mkShell {
       inherit (self.checks.${system}.pre-commit-check) shellHook;
       buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
     };
   });
+in
+{
+  inherit nixosConfigurations darwinConfigurations;
+  checks = mergeAttr hookCheck { };
+  devShells = mergeAttr git-hook shells;
 }
