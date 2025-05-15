@@ -40,7 +40,7 @@ in
       '';
     })
     (mkIf (cfg.kubectl.enable && cfg.kubectl.enableZshIntegration) {
-      programs.zsh.initExtra = lib.mkAfter ''
+      programs.zsh.initContent = lib.mkAfter ''
         source <(kubectl completion zsh)
       '';
     })
@@ -53,7 +53,7 @@ in
       '';
     })
     (mkIf (cfg.helm.enable && cfg.helm.enableZshIntegration) {
-      programs.zsh.initExtra = lib.mkAfter ''
+      programs.zsh.initContent = lib.mkAfter ''
         source <(helm completion zsh)
       '';
     })

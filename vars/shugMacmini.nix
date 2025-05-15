@@ -6,7 +6,7 @@
       modules.gui.aerospace.enable = true;
       modules.gui.font.enable = true;
       modules.tui.homebrew = {
-        enable = true;
+        enable = false;
         masApps = {
           Xcode = 497799835;
           Amphetamine = 937984704;
@@ -61,7 +61,13 @@
         home-modules.kitty.enable = true;
         home-modules.starship.enable = true;
         home-modules.starship.enableZshIntegration = true;
-        home-modules.vscode.enable = true;
+        home-modules.vscode = {
+          enable = true;
+          extensions = {
+            rust = true;
+            web = true;
+          };
+        };
         home-modules.shell.zsh.enable = true;
 
         programs.git.userName = "shug";

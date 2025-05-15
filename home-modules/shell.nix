@@ -69,7 +69,7 @@ in
         enable = mkDefault cfg.zsh.enable;
         enableCompletion = mkDefault cfg.zsh.enableCompletion;
         sessionVariables = cfg.sessionVariables;
-        initExtra = mkBefore ''
+        initContent = mkBefore ''
           bindkey  "^[[H"   beginning-of-line
           bindkey  "^[[F"   end-of-line
           bindkey  "^[[3~"  delete-char
