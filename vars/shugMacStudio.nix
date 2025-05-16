@@ -70,8 +70,6 @@
         };
         home-modules.shell.sessionVariables = {
           LANG = "en_US.UTF-8";
-          GRADLE_USER_HOME = "${config.home.homeDirectory}/Code/lib/gradle";
-          CARGO_HOME = "${config.home.homeDirectory}/Code/lib/cargo";
         };
         home-modules.k8s.kubectl.enable = true;
         home-modules.k8s.kubectl.enableZshIntegration = true;
