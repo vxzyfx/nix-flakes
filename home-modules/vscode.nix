@@ -16,6 +16,11 @@ let
       })
     else
       pkgs.vscode;
+  remoteExtensions =
+    with pkgs.vscode-extensions;
+    optionals cfg.extensions.remote [
+      ms-vscode-remote.remote-ssh
+    ];
   rustExtensions = optionals cfg.extensions.rust (
     with pkgs.vscode-extensions;
     [
@@ -44,6 +49,7 @@ in
       default = defalutPackage;
     };
     extensions = {
+      remote = mkEnableOption "remote拓展";
       rust = mkEnableOption "rust拓展";
       web = mkEnableOption "web拓展";
     };
@@ -52,7 +58,7 @@ in
     programs.vscode = {
       enable = true;
       package = cfg.package;
-      profiles.default.extensions = commonExtensions ++ rustExtensions ++ webExtensions;
+      profiles.default.extensions = remoteExtensions ++ rustExtensions ++ webExtensions ++ commonExtensions;
     };
   };
 }

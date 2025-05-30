@@ -71,6 +71,7 @@ in
         home-modules.vscode = {
           enable = true;
           extensions = {
+            remote = true;
             rust = true;
             web = true;
           };
