@@ -45,7 +45,7 @@ in
           };
           certificatesResolvers.myresolver.acme = {
             dnsChallenge = {
-              provider = "cloudflare";
+              provider = "alidns";
             };
             storage = "${config.modules.nixos.traefik.dataDir}/acme.json";
           };
