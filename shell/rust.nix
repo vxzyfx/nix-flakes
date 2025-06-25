@@ -1,7 +1,7 @@
 { pkgs, vars, ... }:
 let
   shell =
-    if vars.isDarwin then
+    if pkgs.stdenv.hostPlatform.isDarwin then
       "export SHELL=${pkgs.lib.getExe pkgs.zsh}; exec ${pkgs.lib.getExe pkgs.zsh}"
     else
       "";
