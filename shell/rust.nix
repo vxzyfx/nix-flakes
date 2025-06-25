@@ -1,4 +1,8 @@
-{ pkgs, ... }: pkgs.mkShell {
+{ pkgs, vars, ... }:
+let
+  shell = if vars.isDarwin then "exec ${pkgs.lib.getExe pkgs.zsh}" else "";
+in
+pkgs.mkShell {
   packages = with pkgs; [
     rustToolchain
     openssl
@@ -13,5 +17,5 @@
     # Required by rust-analyzer
     RUST_SRC_PATH = "${pkgs.rustToolchain}/lib/rustlib/src/rust/library";
   };
-  shellHook = "exec zsh";
+  shellHook = shell;
 }

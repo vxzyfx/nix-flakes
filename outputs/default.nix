@@ -79,13 +79,29 @@ let
     nodejs = prev.nodejs;
     yarn = (prev.yarn.override { inherit nodejs; });
   };
-  forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs supportedSystems (system: f {
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      overlays = [ inputs.rust-overlay.overlays.default overlays ];
-    };
-  });
-  shells = forEachSupportedSystem ( args: import ../shell args);
+  forEachSupportedSystem =
+    f:
+    inputs.nixpkgs.lib.genAttrs supportedSystems (
+      system:
+      f {
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [
+            inputs.rust-overlay.overlays.default
+            overlays
+          ];
+        };
+        vars = rec {
+          isLinux = lib.strings.hasSuffix "linux" system;
+          isDarwin = lib.strings.hasSuffix "darwin" system;
+          onlyLinuxOptionalAttrs = attr: lib.optionalAttrs isLinux attr;
+          onlyDarwinOptionalAttrs = attr: lib.optionalAttrs isDarwin attr;
+          onlyLinuxOptionals = list: lib.optionals isLinux list;
+          onlyDarwinOptionals = list: lib.optionals isDarwin list;
+        };
+      }
+    );
+  shells = forEachSupportedSystem (args: import ../shell args);
   git-hook = forAllSystems (system: {
     git-hook = nixpkgs.legacyPackages.${system}.mkShell {
       inherit (self.checks.${system}.pre-commit-check) shellHook;
