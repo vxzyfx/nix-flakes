@@ -1,6 +1,10 @@
 { pkgs, vars, ... }:
 let
-  shell = if vars.isDarwin then "exec ${pkgs.lib.getExe pkgs.zsh}" else "";
+  shell =
+    if vars.isDarwin then
+      "export SHELL=${pkgs.lib.getExe pkgs.zsh}; exec ${pkgs.lib.getExe pkgs.zsh}"
+    else
+      "";
 in
 pkgs.mkShell {
   packages = with pkgs; [

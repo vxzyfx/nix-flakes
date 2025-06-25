@@ -60,7 +60,10 @@ in
             {
               "keaising/im-select.nvim",
               enabled = function()
-                local Vxvim = require("vxvim.util")
+                local success, Vxvim = pcall(require, "vxvim.util")
+                if not success then
+                  return false
+                end
                 if Vxvim.is_win() then
                   return false
                 end
@@ -68,7 +71,10 @@ in
                 return not ssh_connection
               end,
               config = function()
-                local Vxvim = require("vxvim.util")
+                local success, Vxvim = pcall(require, "vxvim.util")
+                if not success then
+                  return
+                end
                 local default_im_select = "com.apple.keylayout.ABC"
                 local default_command = "im-select"
                 if Vxvim.is_linux() then
