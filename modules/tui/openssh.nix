@@ -11,6 +11,7 @@ with lib;
 let
   keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBCrDpZKEO9ct8HhSDCzvDwWYHYqrThawHTPJzZyACj5 vxzyfx@gmail.com"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG1Ex2JzVSCeYhua/H4AT7GSXdwTwpSs6LSSZlklqngA shug"
   ];
   cfg = config.modules.tui.openssh;
   users = lib.attrsets.filterAttrs (
