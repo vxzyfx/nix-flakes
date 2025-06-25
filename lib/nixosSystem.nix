@@ -5,6 +5,7 @@
   hostname,
   system,
   genSpecialArgs,
+  overlays ? [],
   specialArgs ? (genSpecialArgs system hostname),
   ...
 }:
@@ -31,5 +32,6 @@ nixpkgs.lib.nixosSystem {
   modules = [
     nixosModules
     ../modules
+    ({ pkgs, ... }: { nixpkgs.overlays = overlays; })
   ];
 }

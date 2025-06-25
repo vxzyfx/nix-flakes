@@ -50,6 +50,7 @@ let
       // {
         inherit hostname;
         system = v.system;
+        overlays = [ packageOverlays ];
       }
     )
   ) darwin;
@@ -60,6 +61,7 @@ let
       // {
         inherit hostname;
         system = v.system;
+        overlays = [ packageOverlays ];
       }
     )
   ) nixos;
@@ -74,6 +76,7 @@ let
     };
   });
   mergeAttr = set1: set2: lib.mergeAttrsWithFunc (s1: s2: s1 // s2) set1 set2;
+  packageOverlays = import ./overlays.nix;
   overlays = final: prev: rec {
     rustToolchain = final.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
     nodejs = prev.nodejs;
@@ -89,6 +92,7 @@ let
           overlays = [
             inputs.rust-overlay.overlays.default
             overlays
+            packageOverlays
           ];
         };
         vars = rec {

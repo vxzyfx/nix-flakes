@@ -12,7 +12,6 @@ in
 {
   darwinSystem = import ./darwinSystem.nix;
   nixosSystem = import ./nixosSystem.nix;
-  packages = import ./packages;
 
   importNix =
     args: i:

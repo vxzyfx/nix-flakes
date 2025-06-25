@@ -5,6 +5,7 @@
   hostname,
   system,
   genSpecialArgs,
+  overlays ? [],
   specialArgs ? (genSpecialArgs system hostname),
   ...
 }:
@@ -31,5 +32,6 @@ nix-darwin.lib.darwinSystem {
   modules = [
     darwinModules
     ../modules
+    ({ pkgs, ... }: { nixpkgs.overlays = overlays; })
   ];
 }

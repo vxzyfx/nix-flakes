@@ -10,14 +10,12 @@ with lib;
 
 let
   cfg = config.home-modules.neovim;
-  packages = mylib.packages { inherit pkgs lib; };
 in
 {
   options.home-modules.neovim = {
     enable = mkEnableOption "neovim软件";
   };
   config = mkIf cfg.enable {
-    home.packages = vars.onlyDarwinOptionals [ packages.im-select ];
     programs.neovim = {
       enable = true;
       viAlias = true;
@@ -35,7 +33,7 @@ in
           lua-language-server
           vue-language-server
         ]
-        ++ vars.onlyDarwinOptionals [ packages.im-select ];
+        ++ vars.onlyDarwinOptionals [ pkgs.macism ];
       extraLuaConfig = ''
         local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
         if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -76,7 +74,7 @@ in
                   return
                 end
                 local default_im_select = "com.apple.keylayout.ABC"
-                local default_command = "im-select"
+                local default_command = "macism"
                 if Vxvim.is_linux() then
                   default_im_select = "keyboard-us"
                   default_command = "fcitx5-remote"
