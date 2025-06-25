@@ -3,6 +3,7 @@
   modules = (
     { pkgs, ... }:
     {
+      system.primaryUser = "shug";
       modules.gui.aerospace.enable = true;
       modules.gui.font.enable = true;
       modules.tui.homebrew = {
