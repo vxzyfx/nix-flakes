@@ -20,7 +20,7 @@
         ];
         casks = [
           "arduino-ide"
-          "wireshark"
+          "wireshark-app"
           "google-chrome"
           "firefox"
           "android-platform-tools"
