@@ -17,6 +17,7 @@
           "openjdk@21"
         ];
         casks = [
+          "android-studio"
           "wireshark-app"
           "google-chrome"
           "firefox"

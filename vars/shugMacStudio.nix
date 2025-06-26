@@ -23,6 +23,7 @@
           "wireshark-app"
           "google-chrome"
           "firefox"
+          "android-studio"
           "android-platform-tools"
         ];
       };
