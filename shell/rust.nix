@@ -15,6 +15,9 @@ pkgs.mkShell {
     cargo-edit
     cargo-watch
     rust-analyzer
+    protobuf
+    buf
+    cmake
   ];
 
   env = {
