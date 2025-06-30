@@ -8,6 +8,10 @@ with lib;
 
 let
   cfg = config.modules.tui.package;
+  shells = builtins.attrNames (import ../../shell { inherit pkgs; });
+  shellPackages = builtins.map (
+    name: pkgs.writeShellScriptBin "develop-${name}" ''nix develop github:vxzyfx/nix-flakes#${name}''
+  ) shells;
 in
 {
   options.modules.tui.package = {
@@ -40,6 +44,6 @@ in
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = cfg.packages ++ cfg.packagesExtra;
+    environment.systemPackages = cfg.packages ++ cfg.packagesExtra ++ shellPackages;
   };
 }
