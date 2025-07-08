@@ -3,13 +3,15 @@
   lib,
   config,
   vars,
-  mylib,
   ...
 }:
 with lib;
 
 let
   cfg = config.home-modules.neovim;
+  vx_codelldb = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
+  vx_liblldb =
+    if vars.isLinux then "${pkgs.lldb_20}/lib/liblldb.so" else "${pkgs.lldb_20}/lib/liblldb.dylib";
 in
 {
   options.home-modules.neovim = {
@@ -25,16 +27,27 @@ in
           fd
           gcc
           git
+          nil
+          gopls
+          vtsls
           lazygit
           ripgrep
           cmake-lint
+          neocmakelsp
+          basedpyright
           vscode-js-debug
           nixfmt-rfc-style
           lua-language-server
           vue-language-server
+          yaml-language-server
+          astro-language-server
+          tailwindcss-language-server
+          nodePackages.vscode-json-languageserver
         ]
         ++ vars.onlyDarwinOptionals [ pkgs.macism ];
       extraLuaConfig = ''
+        vim.g.vx_codelldb = "${vx_codelldb}"
+        vim.g.vx_liblldb = "${vx_liblldb}"
         local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
         if not (vim.uv or vim.loop).fs_stat(lazypath) then
           local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -51,10 +64,12 @@ in
         end
         vim.opt.rtp:prepend(lazypath)
 
+        vim.g.mapleader = " "
+        vim.g.maplocalleader = "\\"
+
         require("lazy").setup({
           spec = {
             { "vxzyfx/vxvim", import = "vxvim.plugins" },
-            { "vxzyfx/vxvim", priority = 10000, lazy = false, opts = {}, cond = true, version = "*" },
             {
               "keaising/im-select.nvim",
               enabled = function()
@@ -90,7 +105,7 @@ in
             lazy = false,
             version = false,
           },
-          install = { colorscheme = { "tokyonight" } },
+          install = { colorscheme = { "catppuccin" } },
           checker = {
             enabled = true,
             notify = false,
