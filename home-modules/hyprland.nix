@@ -38,7 +38,7 @@ in
             "uwsm app -- ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
           ];
           monitor = [
-            "eDP-1, preferred, auto, 2"
+            "eDP-1, preferred, auto, 1.5"
           ];
           general = {
             gaps_in = 3;
