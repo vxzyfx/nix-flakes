@@ -39,6 +39,7 @@ in
           basedpyright
           vscode-js-debug
           nixfmt-rfc-style
+          markdownlint-cli2
           lua-language-server
           vue-language-server
           yaml-language-server
