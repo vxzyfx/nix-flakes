@@ -12,6 +12,8 @@ let
   vx_codelldb = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
   vx_liblldb =
     if vars.isLinux then "${pkgs.lldb_20}/lib/liblldb.so" else "${pkgs.lldb_20}/lib/liblldb.dylib";
+  default_im_select = if vars.isLinux then "keyboard-us" else "com.apple.keylayout.ABC";
+  default_command = if vars.isLinux then "fcitx5-remote" else "macism";
 in
 {
   options.home-modules.neovim = {
@@ -42,6 +44,7 @@ in
           yaml-language-server
           astro-language-server
           tailwindcss-language-server
+          llvmPackages_20.clang-tools
           nodePackages.vscode-json-languageserver
         ]
         ++ vars.onlyDarwinOptionals [ pkgs.macism ];
@@ -73,30 +76,12 @@ in
             {
               "keaising/im-select.nvim",
               enabled = function()
-                local success, Vxvim = pcall(require, "vxvim.util")
-                if not success then
-                  return false
-                end
-                if Vxvim.is_win() then
-                  return false
-                end
-                local ssh_connection = os.getenv("SSH_CONNECTION") -- 使用ssh时禁用
-                return not ssh_connection
+                return vim.env.SSH_TTY == nil
               end,
               config = function()
-                local success, Vxvim = pcall(require, "vxvim.util")
-                if not success then
-                  return
-                end
-                local default_im_select = "com.apple.keylayout.ABC"
-                local default_command = "macism"
-                if Vxvim.is_linux() then
-                  default_im_select = "keyboard-us"
-                  default_command = "fcitx5-remote"
-                end
                 require("im_select").setup({
-                  default_im_select = default_im_select,
-                  default_command = default_command,
+                  default_im_select = "${default_im_select}",
+                  default_command = "${default_command}",
                 })
               end,
             },
