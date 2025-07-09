@@ -30,6 +30,7 @@ in
           gcc
           git
           nil
+          zls
           gopls
           vtsls
           lazygit
@@ -44,9 +45,9 @@ in
           vue-language-server
           yaml-language-server
           astro-language-server
+          vscode-json-languageserver
           tailwindcss-language-server
           llvmPackages_20.clang-tools
-          nodePackages.vscode-json-languageserver
         ]
         ++ vars.onlyDarwinOptionals [ pkgs.macism ];
       extraLuaConfig = ''
