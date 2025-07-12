@@ -41,7 +41,7 @@ in
             Weekday = 7;
           }
         ];
-        nix.gc.options = mkDefault "--delete-older-than 1w";
+        nix.gc.options = mkDefault "--delete-older-than 7d";
         nix.optimise.automatic = mkDefault true;
         nix.optimise.interval = mkDefault [
           {
@@ -54,7 +54,7 @@ in
       mkIf cfg.gc.enable {
         nix.gc.automatic = mkDefault true;
         nix.gc.dates = mkDefault "weekly";
-        nix.gc.options = mkDefault "--delete-older-than 1w";
+        nix.gc.options = mkDefault "--delete-older-than 7d";
         nix.optimise.automatic = mkDefault true;
       }
     ))
