@@ -31,13 +31,17 @@ in
           git
           nil
           zls
+          delve
           gopls
           vtsls
+          gofumpt
+          gotools
           lazygit
           ripgrep
           cmake-lint
           neocmakelsp
           basedpyright
+          golangci-lint
           vscode-js-debug
           nixfmt-rfc-style
           markdownlint-cli2
