@@ -31,8 +31,10 @@ in
           git
           nil
           zls
+          black
           delve
           gopls
+          isort
           shfmt
           vtsls
           gofumpt
