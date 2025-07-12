@@ -33,12 +33,14 @@ in
           zls
           delve
           gopls
+          shfmt
           vtsls
           gofumpt
           gotools
           lazygit
           ripgrep
           cmake-lint
+          shellcheck
           neocmakelsp
           basedpyright
           golangci-lint
@@ -47,6 +49,7 @@ in
           markdownlint-cli2
           lua-language-server
           vue-language-server
+          bash-language-server
           yaml-language-server
           astro-language-server
           vscode-json-languageserver
