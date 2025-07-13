@@ -31,7 +31,7 @@ in
       networking.firewall.enable = false;
       systemd.network.enable = true;
       services.resolved.enable = false;
-      services.adguardhome.enable = true;
+      services.adguardhome.enable = false;
       modules.nixos.traefik = {
         enable = true;
         staticConfigOptions = {

@@ -1,7 +1,8 @@
-final: prev: 
+final: prev:
 let
-  callPackage = pname: prev.callPackage ./packages/${pname}.nix {}; 
+  callPackage = pname: final.callPackage ./packages/${pname}.nix { };
 in
 {
   macism = callPackage "macism";
+  sing-box = callPackage "sing-box";
 }
