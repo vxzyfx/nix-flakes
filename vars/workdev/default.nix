@@ -21,10 +21,12 @@ in
       networking.resolvconf.enable = false;
       systemd.network.enable = true;
       services.resolved.enable = false;
-      services.adguardhome.enable = true;
       environment.systemPackages = [
         pkgs.dig
       ];
+      boot.kernel.sysctl = {
+        "net.ipv4.ip_forward" = 1;
+      };
       modules.nixos.sing-box.enable = true;
       modules.nixos.traefik = {
         enable = true;
