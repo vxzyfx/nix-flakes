@@ -43,6 +43,9 @@ in
           ripgrep
           cmake-lint
           shellcheck
+          ghostscript
+          imagemagick
+          mermaid-cli
           neocmakelsp
           basedpyright
           golangci-lint
