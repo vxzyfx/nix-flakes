@@ -12,6 +12,8 @@ let
   vx_codelldb = "${pkgs.vscode-extensions.vadimcn.vscode-lldb}/share/vscode/extensions/vadimcn.vscode-lldb/adapter/codelldb";
   vx_liblldb =
     if vars.isLinux then "${pkgs.lldb_20}/lib/liblldb.so" else "${pkgs.lldb_20}/lib/liblldb.dylib";
+  vx_ts_vue_location = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
+  vx_tsdk = "${pkgs.vtsls}/lib/vtsls-language-server/node_modules/typescript/lib";
   default_im_select = if vars.isLinux then "keyboard-us" else "com.apple.keylayout.ABC";
   default_command = if vars.isLinux then "fcitx5-remote" else "macism";
 in
@@ -65,6 +67,8 @@ in
       extraLuaConfig = ''
         vim.g.vx_codelldb = "${vx_codelldb}"
         vim.g.vx_liblldb = "${vx_liblldb}"
+        vim.g.vx_tsdk = "${vx_tsdk}"
+        vim.g.vx_ts_vue_location = "${vx_ts_vue_location}"
         local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
         if not (vim.uv or vim.loop).fs_stat(lazypath) then
           local lazyrepo = "https://github.com/folke/lazy.nvim.git"
