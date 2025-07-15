@@ -34,11 +34,13 @@ in
           nil
           zls
           black
+          cmake
           delve
           gopls
           isort
           shfmt
           vtsls
+          gnumake
           gofumpt
           gotools
           lazygit
