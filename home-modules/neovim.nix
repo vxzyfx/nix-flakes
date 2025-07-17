@@ -43,6 +43,7 @@ in
           gnumake
           gofumpt
           gotools
+          helm-ls
           lazygit
           ripgrep
           cmake-lint
@@ -51,8 +52,10 @@ in
           imagemagick
           mermaid-cli
           neocmakelsp
+          tree-sitter
           basedpyright
           golangci-lint
+          sourcekit-lsp
           vscode-js-debug
           nixfmt-rfc-style
           markdownlint-cli2
@@ -61,9 +64,11 @@ in
           bash-language-server
           yaml-language-server
           astro-language-server
+          vscode-solidity-server
           vscode-json-languageserver
           tailwindcss-language-server
           llvmPackages_20.clang-tools
+          dockerfile-language-server-nodejs
         ]
         ++ vars.onlyDarwinOptionals [ pkgs.macism ];
       extraLuaConfig = ''
