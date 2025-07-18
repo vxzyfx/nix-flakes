@@ -33,6 +33,7 @@ in
           git
           nil
           zls
+          deno
           solc
           black
           cmake
@@ -47,6 +48,7 @@ in
           helm-ls
           lazygit
           ripgrep
+          roslyn-ls
           cmake-lint
           shellcheck
           ghostscript
@@ -100,7 +102,7 @@ in
             { "vxzyfx/vxvim", import = "vxvim.plugins" },
             {
               "keaising/im-select.nvim",
-              enabled = function()
+              cond = function()
                 return vim.env.SSH_TTY == nil
               end,
               config = function()
