@@ -63,6 +63,7 @@ in
           tree-sitter
           basedpyright
           golangci-lint
+          rust-analyzer
           sourcekit-lsp
           vscode-js-debug
           nixfmt-rfc-style
