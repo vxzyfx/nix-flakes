@@ -42,15 +42,19 @@ in
           isort
           shfmt
           vtsls
+          stylua
           gnumake
           gofumpt
           gotools
           helm-ls
           lazygit
           ripgrep
+          prettier
           nodejs_22
           roslyn-ls
+          csharpier
           cmake-lint
+          netcoredbg
           shellcheck
           ghostscript
           imagemagick
