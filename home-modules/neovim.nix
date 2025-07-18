@@ -33,6 +33,7 @@ in
           git
           nil
           zls
+          solc
           black
           cmake
           delve
@@ -64,7 +65,6 @@ in
           bash-language-server
           yaml-language-server
           astro-language-server
-          vscode-solidity-server
           vscode-json-languageserver
           tailwindcss-language-server
           llvmPackages_20.clang-tools
