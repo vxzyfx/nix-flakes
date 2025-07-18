@@ -48,6 +48,7 @@ in
           helm-ls
           lazygit
           ripgrep
+          nodejs_22
           roslyn-ls
           cmake-lint
           shellcheck
