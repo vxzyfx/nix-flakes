@@ -14,6 +14,7 @@ let
     if vars.isLinux then "${pkgs.lldb_20}/lib/liblldb.so" else "${pkgs.lldb_20}/lib/liblldb.dylib";
   vx_ts_vue_location = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
   vx_tsdk = "${pkgs.vtsls}/lib/vtsls-language-server/node_modules/typescript/lib";
+  vx_cpptools = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
   default_im_select = if vars.isLinux then "keyboard-us" else "com.apple.keylayout.ABC";
   default_command = if vars.isLinux then "fcitx5-remote" else "macism";
 in
@@ -30,6 +31,7 @@ in
         [
           fd
           gcc
+          gdb
           git
           nil
           zls
@@ -48,6 +50,7 @@ in
           gotools
           helm-ls
           lazygit
+          lldb_20
           ripgrep
           prettier
           nodejs_22
@@ -84,6 +87,7 @@ in
         vim.g.vx_liblldb = "${vx_liblldb}"
         vim.g.vx_tsdk = "${vx_tsdk}"
         vim.g.vx_ts_vue_location = "${vx_ts_vue_location}"
+        vim.g.vx_cpptools = "${vx_cpptools}"
         local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
         if not (vim.uv or vim.loop).fs_stat(lazypath) then
           local lazyrepo = "https://github.com/folke/lazy.nvim.git"
