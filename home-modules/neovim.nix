@@ -71,6 +71,7 @@ in
           golangci-lint
           rust-analyzer
           sourcekit-lsp
+          probe-rs-tools
           vscode-js-debug
           nixfmt-rfc-style
           markdownlint-cli2
