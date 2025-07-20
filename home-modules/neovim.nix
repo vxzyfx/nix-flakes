@@ -23,6 +23,9 @@ in
     enable = mkEnableOption "neovim软件";
   };
   config = mkIf cfg.enable {
+    home.shellAliases = {
+      n = "nvim";
+    };
     programs.neovim = {
       enable = true;
       viAlias = true;
