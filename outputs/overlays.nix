@@ -4,6 +4,7 @@ let
   packages = [
     "macism"
     "sing-box"
+    "kulala-ls"
     "vscode-solidity-server"
   ];
   attrs = builtins.listToAttrs (

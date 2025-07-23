@@ -59,6 +59,7 @@ in
           lldb_20
           ripgrep
           prettier
+          kulala-ls
           nodejs_22
           roslyn-ls
           csharpier
