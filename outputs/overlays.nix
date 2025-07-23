@@ -1,9 +1,16 @@
 final: prev:
 let
   callPackage = pname: final.callPackage ./packages/${pname}.nix { };
+  packages = [
+    "macism"
+    "sing-box"
+    "vscode-solidity-server"
+  ];
+  attrs = builtins.listToAttrs (
+    builtins.map (v: {
+      name = v;
+      value = callPackage v;
+    }) packages
+  );
 in
-{
-  macism = callPackage "macism";
-  sing-box = callPackage "sing-box";
-  vscode-solidity-server = callPackage "vscode-solidity-server";
-}
+attrs

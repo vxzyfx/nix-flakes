@@ -15,6 +15,9 @@ let
   vx_ts_vue_location = "${pkgs.vue-language-server}/lib/node_modules/@vue/language-server";
   vx_tsdk = "${pkgs.vtsls}/lib/vtsls-language-server/node_modules/typescript/lib";
   vx_cpptools = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
+  vx_lombok = "${pkgs.lombok}/share/java/lombok.jar";
+  vx_java_debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server/com.microsoft.java.debug.plugin-*.jar";
+  vx_java_test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar";
   default_im_select = if vars.isLinux then "keyboard-us" else "com.apple.keylayout.ABC";
   default_command = if vars.isLinux then "fcitx5-remote" else "macism";
 in
@@ -75,6 +78,7 @@ in
           vscode-js-debug
           nixfmt-rfc-style
           markdownlint-cli2
+          jdt-language-server
           lua-language-server
           vue-language-server
           bash-language-server
@@ -92,6 +96,9 @@ in
         vim.g.vx_tsdk = "${vx_tsdk}"
         vim.g.vx_ts_vue_location = "${vx_ts_vue_location}"
         vim.g.vx_cpptools = "${vx_cpptools}"
+        vim.g.vx_lombok = "${vx_lombok}"
+        vim.g.vx_java_debug = "${vx_java_debug}"
+        vim.g.vx_java_test = "${vx_java_test}"
         local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
         if not (vim.uv or vim.loop).fs_stat(lazypath) then
           local lazyrepo = "https://github.com/folke/lazy.nvim.git"
