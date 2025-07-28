@@ -39,9 +39,9 @@ in
           gcc
           gdb
           git
-          nil
           zls
           deno
+          nixd
           solc
           black
           cmake
