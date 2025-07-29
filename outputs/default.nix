@@ -97,14 +97,6 @@ let
             packageOverlays
           ];
         };
-        vars = rec {
-          isLinux = lib.strings.hasSuffix "linux" system;
-          isDarwin = lib.strings.hasSuffix "darwin" system;
-          onlyLinuxOptionalAttrs = attr: lib.optionalAttrs isLinux attr;
-          onlyDarwinOptionalAttrs = attr: lib.optionalAttrs isDarwin attr;
-          onlyLinuxOptionals = list: lib.optionals isLinux list;
-          onlyDarwinOptionals = list: lib.optionals isDarwin list;
-        };
       }
     );
   shells = forEachSupportedSystem (args: import ../shell args);
