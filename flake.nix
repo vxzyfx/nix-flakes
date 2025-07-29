@@ -25,8 +25,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    fenix = {
+      url = "github:nix-community/fenix/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

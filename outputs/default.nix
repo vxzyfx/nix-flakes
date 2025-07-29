@@ -78,7 +78,6 @@ let
   mergeAttr = set1: set2: lib.mergeAttrsWithFunc (s1: s2: s1 // s2) set1 set2;
   packageOverlays = import ./overlays.nix;
   overlays = final: prev: rec {
-    rustToolchain = final.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
     nodejs = prev.nodejs;
     yarn = (prev.yarn.override { inherit nodejs; });
   };
@@ -93,7 +92,7 @@ let
             allowUnfree = true;
           };
           overlays = [
-            inputs.rust-overlay.overlays.default
+            inputs.fenix.overlays.default
             overlays
             packageOverlays
           ];

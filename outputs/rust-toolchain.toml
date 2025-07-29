@@ -1,5 +1,0 @@
-[toolchain]
-channel = "1.87.0"
-components = ["cargo", "rust-src", "rust-std", "rustc", "rustfmt", "clippy"]
-profile = "default"
-targets = [ "aarch64-unknown-linux-ohos", "aarch64-apple-darwin", "aarch64-unknown-linux-gnu", "aarch64-unknown-linux-musl", "x86_64-unknown-linux-musl", "x86_64-unknown-linux-gnu"  ]

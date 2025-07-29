@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   shell =
-    if pkgs.stdenv.hostPlatform.isDarwin then
+    if pkgs.stdenv.isDarwin then
       ''
         export SHELL=${pkgs.lib.getExe pkgs.zsh}
         export ANDROID_HOME="$HOME/Library/Android/sdk"
