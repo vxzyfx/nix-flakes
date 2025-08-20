@@ -50,6 +50,7 @@ in
           isort
           shfmt
           vtsls
+          ktlint
           stylua
           gnumake
           gofumpt
