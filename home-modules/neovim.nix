@@ -58,6 +58,7 @@ in
           lazygit
           lldb_20
           ripgrep
+          phpactor
           prettier
           kulala-ls
           nodejs_22
@@ -88,6 +89,8 @@ in
           vscode-json-languageserver
           tailwindcss-language-server
           llvmPackages_20.clang-tools
+          php83Packages.php-cs-fixer
+          php83Packages.php-codesniffer
           dockerfile-language-server-nodejs
         ]
         ++ vars.onlyDarwinOptionals [ pkgs.macism ];
