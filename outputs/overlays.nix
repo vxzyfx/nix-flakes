@@ -5,6 +5,7 @@ let
     "macism"
     "sing-box"
     "kulala-ls"
+    "kotlinls"
     "vscode-solidity-server"
   ];
   attrs = builtins.listToAttrs (

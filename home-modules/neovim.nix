@@ -58,6 +58,7 @@ in
           lazygit
           lldb_20
           ripgrep
+          kotlinls
           phpactor
           prettier
           kulala-ls
