@@ -62,7 +62,6 @@ in
           kotlinls
           phpactor
           prettier
-          kulala-ls
           nodejs_22
           roslyn-ls
           csharpier
