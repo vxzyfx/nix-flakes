@@ -7,7 +7,7 @@
       modules.gui.aerospace.enable = true;
       modules.gui.font.enable = true;
       modules.tui.homebrew = {
-        enable = false;
+        enable = true;
         masApps = {
           Xcode = 497799835;
           Amphetamine = 937984704;
