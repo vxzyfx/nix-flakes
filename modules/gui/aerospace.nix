@@ -25,12 +25,12 @@ in
     settings = options.services.aerospace.settings // {
       default = {
         gaps = {
-          inner.horizontal = 3;
-          inner.vertical = 3;
-          outer.left = 6;
-          outer.bottom = 6;
-          outer.top = 6;
-          outer.right = 6;
+          inner.horizontal = 2;
+          inner.vertical = 2;
+          outer.left = 2;
+          outer.bottom = 2;
+          outer.top = 2;
+          outer.right = 2;
         };
         mode.main.binding = {
           alt-slash = "layout tiles horizontal vertical";
