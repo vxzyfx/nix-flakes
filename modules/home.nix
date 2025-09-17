@@ -4,7 +4,6 @@
   config,
   vars,
   home-manager,
-  mac-app-util,
   specialArgs,
   ...
 }:
@@ -70,7 +69,7 @@ in
                   )
                   v.home-modules
                 ]
-                ++ vars.onlyDarwinOptionals [ mac-app-util.homeManagerModules.default ]
+                ++ vars.onlyDarwinOptionals [ ]
               );
             }
           ) homeUsers
