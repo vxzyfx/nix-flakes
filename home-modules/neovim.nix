@@ -58,6 +58,7 @@ in
           helm-ls
           lazygit
           lldb_20
+          python3
           ripgrep
           kotlinls
           phpactor
