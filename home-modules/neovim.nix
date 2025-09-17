@@ -66,6 +66,7 @@ in
           roslyn-ls
           csharpier
           cmake-lint
+          kulala-fmt
           netcoredbg
           shellcheck
           ghostscript
