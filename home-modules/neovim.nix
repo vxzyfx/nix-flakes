@@ -89,12 +89,12 @@ in
           bash-language-server
           yaml-language-server
           astro-language-server
+          dockerfile-language-server
           vscode-json-languageserver
           tailwindcss-language-server
           llvmPackages_20.clang-tools
           php83Packages.php-cs-fixer
           php83Packages.php-codesniffer
-          dockerfile-language-server-nodejs
         ]
         ++ vars.onlyDarwinOptionals [ pkgs.macism ];
       extraLuaConfig = ''
