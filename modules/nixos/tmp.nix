@@ -14,7 +14,7 @@ in
   options.modules.nixos.tmp = {
     enable = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
       example = true;
       description = "启用tmpfs";
     };

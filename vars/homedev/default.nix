@@ -16,14 +16,12 @@ in
         impermanence.nixosModules.impermanence
         sopsModules.modules
       ];
-      environment.systemPackages =
-        [
-        ];
+      environment.systemPackages = [
+      ];
       modules.nixos.boot.systemd.enable = true;
       modules.tui.openssh.enable = true;
       modules.tui.sops.enable = true;
 
-      modules.nixos.tmp.enable = false;
       modules.nixos.sing-box.enable = true;
       modules.nixos.frp.enableClient = true;
       networking.useDHCP = false;
@@ -89,10 +87,8 @@ in
         imports = [
           sopsModules.home-modules
         ];
-        home.packages =
-          with pkgs;
-          [
-          ];
+        home.packages = with pkgs; [
+        ];
         home-modules.direnv.enable = true;
         home-modules.direnv.enableBashIntegration = true;
         home-modules.git.enable = true;
