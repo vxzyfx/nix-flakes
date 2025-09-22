@@ -53,7 +53,7 @@ in
       homebrew.onActivation.upgrade = mkDefault cfg.upgrade;
       homebrew.onActivation.cleanup = mkDefault cfg.cleanup;
       homebrew.taps = mkDefault [ "homebrew/services" ];
-      homebrew.brews = cfg.brews;
+      homebrew.brews = cfg.brews ++ [ "mas" ];
       homebrew.casks = mkDefault cfg.casks;
     }
   );
