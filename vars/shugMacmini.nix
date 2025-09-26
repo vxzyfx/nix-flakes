@@ -59,6 +59,8 @@
         home-modules.direnv.enable = true;
         home-modules.direnv.enableZshIntegration = true;
         home-modules.git.enable = true;
+        home-modules.fzf.enable = true;
+        home-modules.bat.enable = true;
         home-modules.jetbrains.enable = true;
         home-modules.neovim.enable = true;
         home-modules.kitty.enable = true;
