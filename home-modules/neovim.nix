@@ -55,6 +55,7 @@ in
           gnumake
           gofumpt
           gotools
+          grpcurl
           helm-ls
           lazygit
           lldb_20
@@ -63,6 +64,7 @@ in
           kotlinls
           phpactor
           prettier
+          websocat
           nodejs_22
           roslyn-ls
           csharpier
@@ -93,6 +95,8 @@ in
           vscode-json-languageserver
           tailwindcss-language-server
           llvmPackages_20.clang-tools
+          lua51Packages.lua
+          lua51Packages.luarocks
           php83Packages.php-cs-fixer
           php83Packages.php-codesniffer
         ]
