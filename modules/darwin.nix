@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   vars,
@@ -14,6 +13,11 @@ in
   config = vars.onlyDarwinOptionalAttrs (
     mkIf cfg.isDarwin {
       system.defaults = {
+        CustomUserPreferences = {
+          "com.google.Chrome" = {
+            EncryptedClientHelloEnabled = false;
+          };
+        };
         dock.autohide = true;
         hitoolbox.AppleFnUsageType = "Change Input Source"; # Fn键修改输入法
         finder = {
