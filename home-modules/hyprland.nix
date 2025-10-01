@@ -17,17 +17,7 @@ in
   };
   config = mkMerge [
     (mkIf cfg.enable {
-      home-modules.launcher.fuzzel.enable = mkDefault true;
-      home-modules.mako.enable = mkDefault true;
-      home.pointerCursor = {
-        gtk.enable = true;
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Classic";
-        size = 16;
-      };
-      home.packages = with pkgs; [
-        acpilight
-      ];
+      home-modules.desktop.enable = mkDefault true;
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = false;

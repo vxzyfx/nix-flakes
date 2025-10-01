@@ -64,7 +64,15 @@ in
         home-modules.starship.enable = true;
         home-modules.starship.enableBashIntegration = true;
         home-modules.shell.bash.enable = true;
-        home-modules.hyprland.enable = true;
+        home-modules.niri = {
+          enable = true;
+          bg = ./bg.jpg;
+          systemd.enable = true;
+          outputs."eDP-1" = {
+            mode = "2160x1440@60";
+            scale = 1.5;
+          };
+        };
         home-modules.launcher.fuzzel.enable = true;
         home-modules.waybar.enable = true;
         home-modules.mako.enable = true;

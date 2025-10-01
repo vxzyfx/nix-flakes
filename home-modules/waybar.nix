@@ -17,20 +17,26 @@ in
   config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
+      systemd.enable = true;
+      systemd.target = "graphical-session.target";
       settings = {
         mainBar = {
           layer = "top";
           position = "top";
           height = 26;
           spacing = 4;
-          modules-left = [
-            "hyprland/workspaces"
-            "idle_inhibitor"
-            "wireplumber"
-            "backlight"
-            "network"
-          ];
-          modules-center = [ "hyprland/window" ];
+          modules-left =
+            lib.optionals config.home-modules.hyprland.enable [ "hyprland/workspaces" ]
+            ++ lib.optionals config.home-modules.niri.enable [ "niri/workspaces" ]
+            ++ [
+              "idle_inhibitor"
+              "wireplumber"
+              "backlight"
+              "network"
+            ];
+          modules-center =
+            lib.optionals config.home-modules.hyprland.enable [ "hyprland/window" ]
+            ++ lib.optionals config.home-modules.niri.enable [ "niri/window" ];
           modules-right = [
             "cpu"
             "memory"
@@ -39,6 +45,9 @@ in
             "clock"
           ];
           "hyprland/workspaces" = {
+            format = "{}";
+          };
+          "niri/workspaces" = {
             format = "{}";
           };
           idle_inhibitor = {
@@ -81,6 +90,10 @@ in
             format-linked = "{ifname} (No IP) 󰅛 ";
             format-disconnected = "Disconnected ⚠";
             format-alt = "{ifname} : {ipaddr}/{cidr}";
+          };
+          "niri/window" = {
+            format = "{}";
+            separate-outputs = true;
           };
           "hyprland/window" = {
             format = "{}";
