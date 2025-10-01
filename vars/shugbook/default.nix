@@ -72,6 +72,13 @@ in
             mode = "2160x1440@60";
             scale = 1.5;
           };
+          outputs."DP-1" = {
+            mode = "3840x2160@60";
+            scale = 2.0;
+            position = {
+              x = 1440;
+            };
+          };
         };
         home-modules.launcher.fuzzel.enable = true;
         home-modules.waybar.enable = true;
