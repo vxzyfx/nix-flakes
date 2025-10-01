@@ -72,8 +72,20 @@ in
           input = {
             kb_layout = "us";
           };
+          gesture = [
+            "3, swipe, move"
+            "4, horizontal, workspace"
+            "4, pinch, float"
+            "4, up, dispatcher, global, quickshell:overviewToggle"
+            "4, down, dispatcher, global, quickshell:overviewClose"
+          ];
           gestures = {
-            workspace_swipe = false;
+            workspace_swipe_distance = 700;
+            workspace_swipe_cancel_ratio = 0.2;
+            workspace_swipe_min_speed_to_force = 5;
+            workspace_swipe_direction_lock = true;
+            workspace_swipe_direction_lock_threshold = 10;
+            workspace_swipe_create_new = true;
           };
           animations = {
             enabled = true;
@@ -111,52 +123,51 @@ in
             "$mod, mouse:272, movewindow"
             "$mod, mouse:273, resizewindow"
           ];
-          bind =
-            [
-              "$mod, W, workspace, name:w"
-              "$mod SHIFT, W, movetoworkspace, name:w"
-              "$mod, b, workspace, name:b"
-              "$mod SHIFT, B, movetoworkspace, name:b"
-              "$mod, t, workspace, name:t"
-              "$mod SHIFT, T, movetoworkspace, name:t"
-              "$mod, h, movefocus, l"
-              "$mod, l, movefocus, r"
-              "$mod, k, movefocus, u"
-              "$mod, j, movefocus, d"
-              "$mod SHIFT, h, movewindow, l"
-              "$mod SHIFT, l, movewindow, r"
-              "$mod SHIFT, k, movewindow, u"
-              "$mod SHIFT, j, movewindow, d"
-              "$mod, bracketright, workspace, r+1"
-              "$mod, bracketleft, workspace, r-1"
-              "$mod SHIFT, F, fullscreen"
-              "$mod, F, togglefloating"
-              "$mod, mouse:272, movewindow"
-              "$mod, P, pseudo,"
-              "$mod, slash, togglesplit,"
-              ", XF86MonBrightnessDown, exec, uwsm app -- xbacklight -dec 5"
-              ", XF86MonBrightnessUp, exec, uwsm app -- xbacklight -inc 5"
-              ", XF86AudioMicMute, exec, uwsm app -- wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-              ", XF86AudioMute, exec, uwsm app -- wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-              ", XF86AudioRaiseVolume, exec, uwsm app -- wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
-              ", XF86AudioLowerVolume, exec, uwsm app -- wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
-              "$mod SHIFT, z, killactive,"
-              "$mod, R, exec, uwsm app -- fuzzel"
-              "ALT, SPACE, exec, uwsm app -- fuzzel"
-              "$mod, return, exec, uwsm app -- kitty"
-            ]
-            ++ (builtins.concatLists (
-              builtins.genList (
-                i:
-                let
-                  ws = i + 1;
-                in
-                [
-                  "$mod, code:1${toString i}, workspace, ${toString ws}"
-                  "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-                ]
-              ) 9
-            ));
+          bind = [
+            "$mod, W, workspace, name:w"
+            "$mod SHIFT, W, movetoworkspace, name:w"
+            "$mod, b, workspace, name:b"
+            "$mod SHIFT, B, movetoworkspace, name:b"
+            "$mod, t, workspace, name:t"
+            "$mod SHIFT, T, movetoworkspace, name:t"
+            "$mod, h, movefocus, l"
+            "$mod, l, movefocus, r"
+            "$mod, k, movefocus, u"
+            "$mod, j, movefocus, d"
+            "$mod SHIFT, h, movewindow, l"
+            "$mod SHIFT, l, movewindow, r"
+            "$mod SHIFT, k, movewindow, u"
+            "$mod SHIFT, j, movewindow, d"
+            "$mod, bracketright, workspace, r+1"
+            "$mod, bracketleft, workspace, r-1"
+            "$mod SHIFT, F, fullscreen"
+            "$mod, F, togglefloating"
+            "$mod, mouse:272, movewindow"
+            "$mod, P, pseudo,"
+            "$mod, slash, togglesplit,"
+            ", XF86MonBrightnessDown, exec, uwsm app -- xbacklight -dec 5"
+            ", XF86MonBrightnessUp, exec, uwsm app -- xbacklight -inc 5"
+            ", XF86AudioMicMute, exec, uwsm app -- wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+            ", XF86AudioMute, exec, uwsm app -- wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            ", XF86AudioRaiseVolume, exec, uwsm app -- wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+            ", XF86AudioLowerVolume, exec, uwsm app -- wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-"
+            "$mod SHIFT, z, killactive,"
+            "$mod, R, exec, uwsm app -- fuzzel"
+            "ALT, SPACE, exec, uwsm app -- fuzzel"
+            "$mod, return, exec, uwsm app -- kitty"
+          ]
+          ++ (builtins.concatLists (
+            builtins.genList (
+              i:
+              let
+                ws = i + 1;
+              in
+              [
+                "$mod, code:1${toString i}, workspace, ${toString ws}"
+                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            ) 9
+          ));
         };
         extraConfig = ''
           bind=SUPER SHIFT,R,submap,resize
