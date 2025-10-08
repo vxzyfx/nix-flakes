@@ -58,7 +58,6 @@ in
           alt-0 = "workspace 0";
           alt-w = "workspace W";
           alt-b = "workspace B";
-          alt-t = "workspace T";
           alt-shift-1 = "move-node-to-workspace 1";
           alt-shift-2 = "move-node-to-workspace 2";
           alt-shift-3 = "move-node-to-workspace 3";
@@ -79,7 +78,7 @@ in
           alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
           alt-shift-semicolon = "mode service";
           alt-r = "mode resize";
-          alt-enter = "exec-and-forget ${pkgs.kitty}/bin/kitty -d ~";
+          alt-t = "exec-and-forget ${pkgs.kitty}/bin/kitty -d ~";
         };
         mode.service.binding = {
           r = [
