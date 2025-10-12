@@ -61,6 +61,8 @@ in
         home-modules.git.enable = true;
         home-modules.jetbrains.enable = true;
         home-modules.kitty.enable = true;
+        home-modules.fzf.enable = true;
+        home-modules.bat.enable = true;
         home-modules.starship.enable = true;
         home-modules.starship.enableBashIntegration = true;
         home-modules.shell.bash.enable = true;
