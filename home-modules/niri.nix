@@ -94,7 +94,7 @@ let
 
         Mod+O repeat=false { toggle-overview; }
 
-        Mod+Q repeat=false { close-window; }
+        Mod+Shift+Q repeat=false { close-window; }
 
         Mod+Left  { focus-column-left; }
         Mod+Down  { focus-window-down; }

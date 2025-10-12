@@ -33,9 +33,11 @@ in
           outer.right = 2;
         };
         mode.main.binding = {
-          alt-slash = "layout tiles horizontal vertical";
-          alt-comma = "layout accordion horizontal vertical";
-          alt-f = "layout floating tiling";
+          alt-w = "layout accordion horizontal vertical";
+          alt-comma = "layout tiles vertical";
+          alt-period = "layout tiles horizontal";
+          alt-shift-q = "close";
+          alt-v = "layout floating tiling";
           alt-h = "focus left";
           alt-j = "focus down";
           alt-k = "focus up";
@@ -44,8 +46,8 @@ in
           alt-shift-j = "move down";
           alt-shift-k = "move up";
           alt-shift-l = "move right";
-          alt-shift-minus = "resize smart -50";
-          alt-shift-equal = "resize smart +50";
+          alt-minus = "resize smart -50";
+          alt-equal = "resize smart +50";
           alt-1 = "workspace 1";
           alt-2 = "workspace 2";
           alt-3 = "workspace 3";
@@ -56,8 +58,6 @@ in
           alt-8 = "workspace 8";
           alt-9 = "workspace 9";
           alt-0 = "workspace 0";
-          alt-w = "workspace W";
-          alt-b = "workspace B";
           alt-shift-1 = "move-node-to-workspace 1";
           alt-shift-2 = "move-node-to-workspace 2";
           alt-shift-3 = "move-node-to-workspace 3";
@@ -68,16 +68,12 @@ in
           alt-shift-8 = "move-node-to-workspace 8";
           alt-shift-9 = "move-node-to-workspace 9";
           alt-shift-0 = "move-node-to-workspace 0";
-          alt-shift-w = "move-node-to-workspace W";
-          alt-shift-b = "move-node-to-workspace B";
-          alt-shift-t = "move-node-to-workspace T";
-          alt-leftSquareBracket = "workspace --wrap-around prev";
-          alt-rightSquareBracket = "workspace --wrap-around next";
+          alt-i = "workspace --wrap-around prev";
+          alt-u = "workspace --wrap-around next";
           alt-tab = "workspace-back-and-forth";
           alt-shift-f = "fullscreen";
           alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
           alt-shift-semicolon = "mode service";
-          alt-r = "mode resize";
           alt-t = "exec-and-forget ${pkgs.kitty}/bin/kitty -d ~";
         };
         mode.service.binding = {
@@ -110,14 +106,6 @@ in
             "mode main"
           ];
         };
-        mode.resize.binding = {
-          minus = "resize smart -50";
-          equal = "resize smart +50";
-          esc = "mode main";
-        };
-        on-focus-changed = [
-          "move-mouse window-lazy-center"
-        ];
         on-window-detected = [
           {
             check-further-callbacks = false;
@@ -125,7 +113,7 @@ in
               app-id = "com.google.Chrome";
             };
             run = [
-              "move-node-to-workspace B"
+              "move-node-to-workspace 6"
             ];
           }
           {
