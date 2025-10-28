@@ -15,7 +15,7 @@ in
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      extraConfig = {
+      settings = {
         init = {
           defaultBranch = "main";
         };

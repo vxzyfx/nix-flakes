@@ -28,7 +28,7 @@ in
         git
         wget
         vim
-        curlHTTP3
+        curl
         fastfetch
         tree
         file

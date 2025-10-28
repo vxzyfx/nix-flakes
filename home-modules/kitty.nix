@@ -21,8 +21,12 @@ in
         name = "JetBrainsMonoNL Nerd Font Mono";
       };
       themeFile = "tokyo_night_moon";
+      extraConfig = ''
+        mouse_map left click ungrabbed
+      '';
       settings = {
         term = "xterm-256color";
+        allow_hyperlinks = "no";
         hide_window_decorations = "yes";
         macos_quit_when_last_window_closed = "yes";
         window_padding_width = 6;

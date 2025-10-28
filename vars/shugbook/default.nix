@@ -95,8 +95,8 @@ in
           };
         };
 
-        programs.git.userName = "shug";
-        programs.git.userEmail = "vxzyfx@gmail.com";
+        programs.git.settings.user.name = "shug";
+        programs.git.settings.user.email = "vxzyfx@gmail.com";
       }
     );
   };

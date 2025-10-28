@@ -3,6 +3,9 @@
   modules = (
     { pkgs, ... }:
     {
+      environment.systemPackages = [
+        pkgs.minio-client
+      ];
       system.primaryUser = "shug";
       modules.gui.aerospace.enable = true;
       modules.gui.font.enable = true;
@@ -75,8 +78,8 @@
         };
         home-modules.shell.zsh.enable = true;
 
-        programs.git.userName = "shug";
-        programs.git.userEmail = "vxzyfx@gmail.com";
+        programs.git.settings.user.name = "shug";
+        programs.git.settings.user.email = "vxzyfx@gmail.com";
       }
     );
   };

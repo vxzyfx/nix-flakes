@@ -76,8 +76,8 @@ in
         home-modules.shell.bash.enable = true;
         home-modules.neovim.enable = true;
 
-        programs.git.userName = "shug";
-        programs.git.userEmail = "vxzyfx@gmail.com";
+        programs.git.settings.user.name = "shug";
+        programs.git.settings.user.email = "vxzyfx@gmail.com";
       }
     );
   };
