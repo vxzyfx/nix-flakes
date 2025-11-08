@@ -89,6 +89,7 @@ in
         ];
         home.packages = with pkgs; [
         ];
+        home-modules.yazi.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableBashIntegration = true;
         home-modules.git.enable = true;

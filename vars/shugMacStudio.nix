@@ -57,7 +57,7 @@
         sops.secrets."ssh/pub1" = {
           path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
         };
-        home-modules.nnn.enable = true;
+        home-modules.yazi.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableZshIntegration = true;
         home-modules.git.enable = true;

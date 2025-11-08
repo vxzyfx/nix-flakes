@@ -55,7 +55,7 @@ in
         home.packages = with pkgs; [
           remmina
         ];
-        home-modules.nnn.enable = true;
+        home-modules.yazi.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableBashIntegration = true;
         home-modules.git.enable = true;
