@@ -3,8 +3,9 @@
   modules = (
     { pkgs, ... }:
     {
-      environment.systemPackages = [
-        pkgs.minio-client
+      environment.systemPackages = with pkgs; [
+        codex
+        minio-client
       ];
       system.primaryUser = "shug";
       modules.gui.aerospace.enable = true;
