@@ -20,6 +20,7 @@ in
           defaultBranch = "main";
         };
       };
+      lfs.enable = true;
     };
     home.shellAliases = {
       lg = "lazygit";
