@@ -21,8 +21,8 @@ in
   config = mkIf cfg.enable {
     programs.zellij = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
+      enableBashIntegration = false;
+      enableZshIntegration = false;
     };
   };
 }

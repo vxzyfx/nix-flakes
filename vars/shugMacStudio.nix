@@ -5,6 +5,7 @@
     {
       environment.systemPackages = with pkgs; [
         codex
+        gemini-cli
         minio-client
       ];
       system.primaryUser = "shug";
@@ -59,6 +60,7 @@
           path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
         };
         home-modules.yazi.enable = true;
+        home-modules.zellij.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableZshIntegration = true;
         home-modules.git.enable = true;
