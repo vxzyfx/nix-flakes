@@ -10,6 +10,17 @@ in
         ./hardware.nix
         sopsModules.modules
       ];
+      modules.nixos.nspawn.debian13 = {
+        enable = true;
+        networkConfig = {
+          Bridge = [ "br0" ];
+        };
+      };
+      modules.nixos.nspawn.dev = {
+        networkConfig = {
+          Bridge = [ "br0" ];
+        };
+      };
       modules.nixos.boot.systemd.enable = true;
       modules.nixos.virt.enable = true;
       modules.tui.sops.enable = true;
@@ -27,7 +38,6 @@ in
       boot.kernel.sysctl = {
         "net.ipv4.ip_forward" = 1;
       };
-      modules.nixos.sing-box.enable = true;
       modules.nixos.traefik = {
         enable = true;
         staticConfigOptions = {

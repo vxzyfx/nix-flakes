@@ -25,18 +25,18 @@
         mode = "0444";
         path = "/etc/systemd/network/11-eth1.network";
       };
-      sops.secrets.network2 = {
-        mode = "0444";
-        path = "/etc/systemd/network/12-eth3.network";
-      };
+      # sops.secrets.network2 = {
+      #   mode = "0444";
+      #   path = "/etc/systemd/network/12-eth3.network";
+      # };
       sops.secrets.netdev0 = {
         mode = "0444";
         path = "/etc/systemd/network/10-dev0.netdev";
       };
-      sops.secrets.netdev1 = {
-        mode = "0444";
-        path = "/etc/systemd/network/12-dev3.netdev";
-      };
+      # sops.secrets.netdev1 = {
+      #   mode = "0444";
+      #   path = "/etc/systemd/network/12-dev3.netdev";
+      # };
       sops.secrets.resolv = {
         mode = "0444";
         path = "/etc/resolv.conf";
