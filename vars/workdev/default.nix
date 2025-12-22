@@ -10,7 +10,7 @@ in
         ./hardware.nix
         sopsModules.modules
       ];
-      modules.nixos.nspawn.debian13 = {
+      modules.nixos.nspawn.proxy = {
         enable = true;
         networkConfig = {
           Bridge = [ "br0" ];
