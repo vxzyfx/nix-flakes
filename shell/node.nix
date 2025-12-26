@@ -14,7 +14,7 @@ pkgs.mkShell {
     node2nix
     nodejs
     nodePackages.pnpm
-    yarn
+    (yarn.override { inherit nodejs; })
   ];
   shellHook = shell;
 }

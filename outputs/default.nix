@@ -77,10 +77,6 @@ let
   });
   mergeAttr = set1: set2: lib.mergeAttrsWithFunc (s1: s2: s1 // s2) set1 set2;
   packageOverlays = import ./overlays.nix;
-  overlays = final: prev: rec {
-    nodejs = prev.nodejs;
-    yarn = (prev.yarn.override { inherit nodejs; });
-  };
   forEachSupportedSystem =
     f:
     inputs.nixpkgs.lib.genAttrs supportedSystems (
@@ -93,7 +89,6 @@ let
           };
           overlays = [
             inputs.fenix.overlays.default
-            overlays
             packageOverlays
           ];
         };
