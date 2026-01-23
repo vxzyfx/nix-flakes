@@ -18,9 +18,9 @@ in
       type = types.listOf types.package;
       description = "安装的jetbrains工具";
       default = with pkgs; [
-        jetbrains.idea-ultimate
+        jetbrains.idea
         jetbrains.clion
-        jetbrains.pycharm-professional
+        jetbrains.pycharm
         jetbrains.webstorm
         jetbrains.phpstorm
         jetbrains.datagrip

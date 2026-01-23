@@ -51,6 +51,7 @@ in
           shfmt
           vtsls
           ktlint
+          nixfmt
           stylua
           gnumake
           gofumpt
@@ -83,7 +84,6 @@ in
           sourcekit-lsp
           probe-rs-tools
           vscode-js-debug
-          nixfmt-rfc-style
           markdownlint-cli2
           jdt-language-server
           lua-language-server
