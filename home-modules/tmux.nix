@@ -16,6 +16,7 @@ in
     programs.tmux = {
       enable = true;
       mouse = true;
+      escapeTime = 0;
       extraConfig = ''
         set -g status off
       '';
