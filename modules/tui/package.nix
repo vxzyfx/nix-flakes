@@ -10,7 +10,7 @@ let
   cfg = config.modules.tui.package;
   shells = builtins.attrNames (import ../../shell { inherit pkgs; });
   shellPackages = builtins.map (
-    name: pkgs.writeShellScriptBin "develop-${name}" ''nix develop github:vxzyfx/nix-flakes#${name}''
+    name: pkgs.writeShellScriptBin "develop-${name}" "nix develop github:vxzyfx/nix-flakes#${name}"
   ) shells;
 in
 {
@@ -25,6 +25,7 @@ in
       type = types.listOf types.package;
       description = "通用软件包";
       default = with pkgs; [
+        btop
         git
         wget
         vim

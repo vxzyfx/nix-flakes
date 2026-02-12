@@ -1,6 +1,4 @@
 {
-  self,
-  nixpkgs,
   ...
 }@inputs:
 let
@@ -66,16 +64,6 @@ let
     )
   ) nixos;
   supportedSystems = lib.unique (lib.attrValues (lib.mapAttrs (name: value: value.system) myvars));
-  forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-  hookCheck = forAllSystems (system: {
-    pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-      src = ../.;
-      hooks = {
-        nixfmt-rfc-style.enable = true;
-      };
-    };
-  });
-  mergeAttr = set1: set2: lib.mergeAttrsWithFunc (s1: s2: s1 // s2) set1 set2;
   packageOverlays = import ./overlays.nix;
   overlays = final: prev: rec {
     nodejs = prev.nodejs;
@@ -100,15 +88,8 @@ let
       }
     );
   shells = forEachSupportedSystem (args: import ../shell args);
-  git-hook = forAllSystems (system: {
-    git-hook = nixpkgs.legacyPackages.${system}.mkShell {
-      inherit (self.checks.${system}.pre-commit-check) shellHook;
-      buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-    };
-  });
 in
 {
   inherit nixosConfigurations darwinConfigurations;
-  checks = mergeAttr hookCheck { };
-  devShells = mergeAttr git-hook shells;
+  devShells = shells;
 }

@@ -24,6 +24,7 @@ in
       settings = {
         add_newline = false;
         command_timeout = 1000;
+        scan_timeout = 1000;
         battery = {
           disabled = true;
         };

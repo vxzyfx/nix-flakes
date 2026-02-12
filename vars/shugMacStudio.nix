@@ -7,7 +7,25 @@
         codex
         gemini-cli
         minio-client
+        neovim
       ];
+      launchd.agents."nix.ollama" = {
+        environment = {
+          HOME = "/Users/shug";
+          OLLAMA_FLASH_ATTENTION = "1";
+          OLLAMA_KV_CACHE_TYPE = "q8_0";
+          OLLAMA_HOST = "0.0.0.0";
+        };
+        serviceConfig = {
+          ProgramArguments = [
+            "${pkgs.ollama}/bin/ollama"
+            "serve"
+          ];
+          KeepAlive = true;
+          StandardOutPath = "/var/log/ollama.log";
+          StandardErrorPath = "/var/log/ollama.err";
+        };
+      };
       system.primaryUser = "shug";
       modules.gui.aerospace.enable = true;
       modules.gui.font.enable = true;
@@ -21,9 +39,9 @@
         brews = [
           "openjdk@17"
           "openjdk@21"
-          "scrcpy"
         ];
         casks = [
+          "racket"
           "arduino-ide"
           "wireshark-app"
           "google-chrome"
@@ -60,10 +78,9 @@
           path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub";
         };
         home-modules.yazi.enable = true;
-        home-modules.zellij.enable = true;
+        home-modules.tmux.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableZshIntegration = true;
-        home-modules.git.enable = true;
         home-modules.fzf.enable = true;
         home-modules.bat.enable = true;
         home-modules.jetbrains.enable = true;
@@ -86,9 +103,14 @@
         home-modules.k8s.kubectl.enableZshIntegration = true;
         home-modules.k8s.helm.enable = true;
         home-modules.k8s.helm.enableZshIntegration = true;
-
-        programs.git.settings.user.name = "shug";
-        programs.git.settings.user.email = "vxzyfx@gmail.com";
+        home-modules.git = {
+          enable = true;
+          username = "shug";
+          email = "vxshug@gmail.com";
+          sign = {
+            enable = true;
+          };
+        };
       }
     );
   };

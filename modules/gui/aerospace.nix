@@ -10,6 +10,20 @@
 with lib;
 let
   cfg = config.modules.gui.aerospace;
+  floatAppid = [
+    "com.apple.finder"
+    "com.tencent.xinWeChat"
+    "com.tencent.flue.WeChatAppEx"
+  ];
+  listToFloat = builtins.map (appid: {
+    check-further-callbacks = false;
+    "if" = {
+      app-id = appid;
+    };
+    run = [
+      "layout floating"
+    ];
+  }) floatAppid;
 in
 {
   options.modules.gui.aerospace = {
@@ -116,16 +130,8 @@ in
               "move-node-to-workspace 6"
             ];
           }
-          {
-            check-further-callbacks = false;
-            "if" = {
-              app-id = "com.apple.finder";
-            };
-            run = [
-              "layout floating"
-            ];
-          }
-        ];
+        ]
+        ++ listToFloat;
       };
     };
   };

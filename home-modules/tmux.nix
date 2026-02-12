@@ -19,6 +19,8 @@ in
       escapeTime = 0;
       extraConfig = ''
         set -g status off
+        set -g allow-passthrough on
+        set -s set-clipboard on
       '';
     };
   };
