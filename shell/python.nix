@@ -1,6 +1,5 @@
 { pkgs, ... }:
 let
-  python = pkgs.python3;
   shell =
     if pkgs.stdenv.isDarwin then
       ''
@@ -12,8 +11,7 @@ let
 in
 pkgs.mkShell {
   packages = [
-    python.pkgs.venvShellHook
-    python.pkgs.pip
+    pkgs.uv
   ];
   shellHook = shell;
 }
