@@ -12,12 +12,12 @@ let
 in
 {
   options.modules.nixos.nspawn = mkOption {
+    default = { };
     type =
       with lib.types;
       attrsOf (
         submodule (
           {
-            name,
             ...
           }:
           {

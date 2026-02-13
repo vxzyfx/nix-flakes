@@ -81,7 +81,7 @@ in
           basedpyright
           golangci-lint
           rust-analyzer
-          sourcekit-lsp
+          # sourcekit-lsp
           probe-rs-tools
           vscode-js-debug
           markdownlint-cli2

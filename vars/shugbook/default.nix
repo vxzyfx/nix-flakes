@@ -58,7 +58,6 @@ in
         home-modules.yazi.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableBashIntegration = true;
-        home-modules.git.enable = true;
         home-modules.jetbrains.enable = true;
         home-modules.kitty.enable = true;
         home-modules.fzf.enable = true;
@@ -94,9 +93,14 @@ in
             web = true;
           };
         };
-
-        programs.git.settings.user.name = "shug";
-        programs.git.settings.user.email = "vxzyfx@gmail.com";
+        home-modules.git = {
+          enable = true;
+          username = "shug";
+          email = "vxzyfx@gmail.com";
+          sign = {
+            enable = true;
+          };
+        };
       }
     );
   };

@@ -23,7 +23,7 @@ in
     fonts.packages =
       with pkgs;
       [
-        (mkIf cfg.yahei.enable vistafonts-chs)
+        (mkIf cfg.yahei.enable vista-fonts-chs)
         font-awesome
         nerd-fonts.jetbrains-mono
       ]
