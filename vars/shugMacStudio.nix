@@ -4,28 +4,26 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        codex
-        gemini-cli
         minio-client
         neovim
       ];
-      launchd.agents."nix.ollama" = {
-        environment = {
-          HOME = "/Users/shug";
-          OLLAMA_FLASH_ATTENTION = "1";
-          OLLAMA_KV_CACHE_TYPE = "q8_0";
-          OLLAMA_HOST = "0.0.0.0";
-        };
-        serviceConfig = {
-          ProgramArguments = [
-            "${pkgs.ollama}/bin/ollama"
-            "serve"
-          ];
-          KeepAlive = true;
-          StandardOutPath = "/var/log/ollama.log";
-          StandardErrorPath = "/var/log/ollama.err";
-        };
-      };
+      # launchd.agents."nix.ollama" = {
+      #   environment = {
+      #     HOME = "/Users/shug";
+      #     OLLAMA_FLASH_ATTENTION = "1";
+      #     OLLAMA_KV_CACHE_TYPE = "q8_0";
+      #     OLLAMA_HOST = "0.0.0.0";
+      #   };
+      #   serviceConfig = {
+      #     ProgramArguments = [
+      #       "${pkgs.ollama}/bin/ollama"
+      #       "serve"
+      #     ];
+      #     KeepAlive = true;
+      #     # StandardOutPath = "/var/log/ollama.log";
+      #     # StandardErrorPath = "/var/log/ollama.err";
+      #   };
+      # };
       system.primaryUser = "shug";
       modules.gui.aerospace.enable = true;
       modules.gui.font.enable = true;

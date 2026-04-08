@@ -13,6 +13,7 @@ pkgs.mkShell {
   packages = with pkgs; [
     bun
     opencode
+    python315
   ];
   shellHook = shell;
 }

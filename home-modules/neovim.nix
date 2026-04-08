@@ -53,6 +53,7 @@ in
           ktlint
           nixfmt
           stylua
+          nodejs
           gnumake
           gofumpt
           gotools
@@ -66,7 +67,6 @@ in
           phpactor
           prettier
           websocat
-          nodejs_22
           roslyn-ls
           csharpier
           cmake-lint

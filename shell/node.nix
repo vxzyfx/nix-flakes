@@ -11,9 +11,9 @@ let
 in
 pkgs.mkShell {
   packages = with pkgs; [
-    node2nix
+    vtsls
     nodejs
-    nodePackages.pnpm
+    pnpm
     yarn
   ];
   shellHook = shell;

@@ -14,7 +14,7 @@ in
   options.modules.system = {
     stateVersion = mkOption {
       type = types.str;
-      default = "24.05";
+      default = "26.05";
       example = "24.05";
       description = "特定计算机上安装的 NixOS 的第一个版本";
     };
