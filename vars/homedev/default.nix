@@ -93,14 +93,19 @@ in
         home-modules.zellij.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableBashIntegration = true;
-        home-modules.git.enable = true;
         home-modules.starship.enable = true;
         home-modules.starship.enableBashIntegration = true;
         home-modules.shell.bash.enable = true;
         home-modules.neovim.enable = true;
 
-        programs.git.settings.user.name = "shug";
-        programs.git.settings.user.email = "vxzyfx@gmail.com";
+        home-modules.git = {
+          enable = true;
+          username = "shug";
+          email = "vxzyfx@gmail.com";
+          sign = {
+            enable = true;
+          };
+        };
       }
     );
   };

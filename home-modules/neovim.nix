@@ -63,6 +63,7 @@ in
           lldb_20
           python3
           ripgrep
+          ast-grep
           kotlinls
           phpactor
           prettier
@@ -77,7 +78,7 @@ in
           imagemagick
           mermaid-cli
           neocmakelsp
-          tree-sitter
+          tree-sitter26
           basedpyright
           golangci-lint
           rust-analyzer

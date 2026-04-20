@@ -4,8 +4,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        codex
-        minio-client
+        gh
       ];
       system.primaryUser = "shug";
       modules.gui.aerospace.enable = true;
@@ -63,7 +62,6 @@
         home-modules.tmux.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableZshIntegration = true;
-        home-modules.git.enable = true;
         home-modules.fzf.enable = true;
         home-modules.bat.enable = true;
         home-modules.jetbrains.enable = true;
@@ -80,8 +78,14 @@
         };
         home-modules.shell.zsh.enable = true;
 
-        programs.git.settings.user.name = "shug";
-        programs.git.settings.user.email = "vxzyfx@gmail.com";
+        home-modules.git = {
+          enable = true;
+          username = "shug";
+          email = "vxzyfx@gmail.com";
+          sign = {
+            enable = true;
+          };
+        };
       }
     );
   };

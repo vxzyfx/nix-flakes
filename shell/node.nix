@@ -15,6 +15,8 @@ pkgs.mkShell {
     nodejs
     pnpm
     yarn
+    typescript
+    typescript-language-server
   ];
   shellHook = shell;
 }
