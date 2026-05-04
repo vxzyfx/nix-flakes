@@ -88,8 +88,9 @@ let
       }
     );
   shells = forEachSupportedSystem (args: import ../shell args);
+  packages = forEachSupportedSystem (args: args.pkgs);
 in
 {
-  inherit nixosConfigurations darwinConfigurations;
+  inherit nixosConfigurations darwinConfigurations packages;
   devShells = shells;
 }
