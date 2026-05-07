@@ -28,6 +28,30 @@ in
         pane_frames = false;
         show_startup_tips = false;
         default_layout = "compact";
+        keybinds = {
+          normal._children = [
+            {
+              bind = {
+                _args = [
+                  "Ctrl Shift Left"
+                ];
+                _children = [
+                  { GoToPreviousTab = { }; }
+                ];
+              };
+            }
+            {
+              bind = {
+                _args = [
+                  "Ctrl Shift Right"
+                ];
+                _children = [
+                  { GoToNextTab = { }; }
+                ];
+              };
+            }
+          ];
+        };
       };
       layouts = {
         compact = {
