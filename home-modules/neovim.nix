@@ -32,6 +32,10 @@ in
     programs.neovim = {
       enable = true;
       viAlias = true;
+      initLua = ''
+        vim.pack.add({{ src = "https://github.com/vxzyfx/vxvim.nvim.git" }})
+        require("vxvim").setup({})
+      '';
       extraPackages =
         with pkgs;
         [
@@ -81,8 +85,6 @@ in
           tree-sitter26
           basedpyright
           golangci-lint
-          rust-analyzer
-          # sourcekit-lsp
           probe-rs-tools
           vscode-js-debug
           markdownlint-cli2
