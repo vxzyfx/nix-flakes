@@ -60,12 +60,14 @@
         };
         home-modules.yazi.enable = true;
         home-modules.tmux.enable = true;
+        home-modules.zellij.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableZshIntegration = true;
         home-modules.fzf.enable = true;
         home-modules.bat.enable = true;
         home-modules.jetbrains.enable = true;
         home-modules.neovim.enable = true;
+        home-modules.ghostty.enable = true;
         home-modules.kitty.enable = true;
         home-modules.starship.enable = true;
         home-modules.starship.enableZshIntegration = true;

@@ -56,9 +56,11 @@ in
           remmina
         ];
         home-modules.yazi.enable = true;
+        home-modules.zellij.enable = true;
         home-modules.direnv.enable = true;
         home-modules.direnv.enableBashIntegration = true;
         home-modules.jetbrains.enable = true;
+        home-modules.ghostty.enable = true;
         home-modules.kitty.enable = true;
         home-modules.fzf.enable = true;
         home-modules.bat.enable = true;

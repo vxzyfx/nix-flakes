@@ -88,7 +88,6 @@ in
           alt-shift-f = "fullscreen";
           alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
           alt-shift-semicolon = "mode service";
-          alt-t = "exec-and-forget ${pkgs.kitty}/bin/kitty -d ~";
         };
         mode.service.binding = {
           r = [
