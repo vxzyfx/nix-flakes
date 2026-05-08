@@ -34,6 +34,20 @@ attrs
       };
     }
   );
+  zellij =
+    let
+      compactBarWasm = final.fetchurl {
+        url = "https://raw.githubusercontent.com/vxzyfx/resource/main/zellij/plugins/compact-bar.wasm";
+        hash = "sha256-tC/qDgCe7hOCRzB0uxI2QSLtDmPoC+0dwORfLjdyCA8=";
+      };
+    in
+    prev.zellij.overrideAttrs (
+      finalAttrs: previousAttrs: {
+        preBuild = ''
+          install -Dm0644 ${compactBarWasm} zellij-utils/assets/plugins/compact-bar.wasm
+        '';
+      }
+    );
   tree-sitter26 = prev.rustPlatform.buildRustPackage (finalAttrs: {
     pname = "tree-sitter";
     version = "0.26.8";
