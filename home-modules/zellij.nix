@@ -21,8 +21,6 @@ in
   config = mkIf cfg.enable {
     programs.zellij = {
       enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
       settings = {
         theme = "catppuccin-mocha";
         pane_frames = false;
