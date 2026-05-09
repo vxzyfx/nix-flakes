@@ -26,7 +26,6 @@ in
       settings = {
         theme = "catppuccin-mocha";
         pane_frames = false;
-        mouse_mode = false;
         show_startup_tips = false;
         default_layout = "compact";
         keybinds = {
