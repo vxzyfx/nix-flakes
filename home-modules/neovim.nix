@@ -82,7 +82,7 @@ in
           imagemagick
           mermaid-cli
           neocmakelsp
-          tree-sitter26
+          tree-sitter
           basedpyright
           golangci-lint
           probe-rs-tools

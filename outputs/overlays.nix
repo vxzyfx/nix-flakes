@@ -34,21 +34,6 @@ attrs
       };
     }
   );
-  tree-sitter26 = prev.rustPlatform.buildRustPackage (finalAttrs: {
-    pname = "tree-sitter";
-    version = "0.26.8";
-    src = final.fetchFromGitHub {
-      owner = "tree-sitter";
-      repo = "tree-sitter";
-      rev = "v${finalAttrs.version}";
-      hash = "sha256-fcFEfoALrbpBD6rWogxJ7FNVlvDQgswoX9ylRgko+8Q=";
-      fetchSubmodules = true;
-    };
-    patches = [ ];
-    postPatch = "";
-    cargoHash = "sha256-9FeWnWWPUWmMF15Psmul8GxGv2JceHWc2WZPmOr81gw=";
-    doCheck = false;
-  });
   ollama = prev.ollama.overrideAttrs (
     finalAttrs: previousAttrs: {
       version = "0.17.7";
