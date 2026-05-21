@@ -38,6 +38,7 @@ in
     };
     settings = options.services.aerospace.settings // {
       default = {
+        accordion-padding = 0;
         gaps = {
           inner.horizontal = 2;
           inner.vertical = 2;
