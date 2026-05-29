@@ -30,12 +30,13 @@ in
         wget
         vim
         curl
-        fastfetch
         tree
         file
         rar
         jq
         fzf
+        ripgrep
+        fastfetch
       ];
     };
     packagesExtra = mkOption {
