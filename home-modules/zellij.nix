@@ -31,7 +31,7 @@ in
             {
               bind = {
                 _args = [
-                  "Ctrl Shift Left"
+                  "Ctrl ["
                 ];
                 _children = [
                   { GoToPreviousTab = { }; }
@@ -41,7 +41,7 @@ in
             {
               bind = {
                 _args = [
-                  "Ctrl Shift Right"
+                  "Ctrl ]"
                 ];
                 _children = [
                   { GoToNextTab = { }; }
