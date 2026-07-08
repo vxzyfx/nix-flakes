@@ -62,6 +62,11 @@ in
         enable = mkDefault cfg.bash.enable;
         enableCompletion = mkDefault cfg.bash.enableCompletion;
         sessionVariables = cfg.sessionVariables;
+        initExtra = mkAfter ''
+          if [ -f ~/.shellenv ]; then
+            . ~/.shellenv
+          fi
+        '';
       };
     })
     (mkIf cfg.zsh.enable {
@@ -73,6 +78,15 @@ in
           bindkey  "^[[H"   beginning-of-line
           bindkey  "^[[F"   end-of-line
           bindkey  "^[[3~"  delete-char
+        '';
+      };
+    })
+    (mkIf cfg.zsh.enable {
+      programs.zsh = {
+        initContent = mkAfter ''
+          if [ -f ~/.shellenv ]; then
+            . ~/.shellenv
+          fi
         '';
       };
     })
