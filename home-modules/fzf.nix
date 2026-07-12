@@ -18,12 +18,12 @@ in
       enable = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
-      fileWidgetOptions = [
+      fileWidget.options = [
         "--walker-skip .git,node_modules,target"
         "--preview 'bat -n --color=always {}'"
         "--bind 'ctrl-/:change-preview-window(down|hidden|)'"
       ];
-      changeDirWidgetOptions = [
+      changeDirWidget.options = [
         "--walker-skip .git,node_modules,target"
         "--preview 'tree -C {}'"
       ];
