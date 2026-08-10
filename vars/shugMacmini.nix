@@ -7,7 +7,7 @@
         gh
       ];
       system.primaryUser = "shug";
-      modules.gui.aerospace.enable = true;
+      modules.gui.aerospace.enable = false;
       modules.gui.font.enable = true;
       modules.tui.homebrew = {
         enable = true;
