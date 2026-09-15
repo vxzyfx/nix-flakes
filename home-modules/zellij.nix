@@ -27,7 +27,18 @@ in
         show_startup_tips = false;
         default_layout = "compact";
         keybinds = {
+          normal._props.clear-defaults = true;
           normal._children = [
+            {
+              bind = {
+                _args = [
+                  "Ctrl b"
+                ];
+                _children = [
+                  { SwitchToMode._args = [ "tmux" ]; }
+                ];
+              };
+            }
             {
               bind = {
                 _args = [
@@ -42,6 +53,26 @@ in
               bind = {
                 _args = [
                   "Ctrl ]"
+                ];
+                _children = [
+                  { GoToNextTab = { }; }
+                ];
+              };
+            }
+            {
+              bind = {
+                _args = [
+                  "Ctrl 【"
+                ];
+                _children = [
+                  { GoToPreviousTab = { }; }
+                ];
+              };
+            }
+            {
+              bind = {
+                _args = [
+                  "Ctrl  】"
                 ];
                 _children = [
                   { GoToNextTab = { }; }
