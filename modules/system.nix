@@ -44,7 +44,7 @@ in
     };
     timeZone = mkOption {
       type = types.str;
-      default = "Asia/Shanghai";
+      default = "America/Los_Angeles";
       example = "Asia/Shanghai";
       description = "系统时区";
     };
