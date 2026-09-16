@@ -41,7 +41,7 @@
           "racket"
           "arduino-ide"
           "wireshark-app"
-          "google-chrome"
+          "ungoogled-chromium"
           "firefox"
           "android-studio"
           "android-platform-tools"
