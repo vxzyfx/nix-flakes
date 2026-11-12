@@ -18,17 +18,17 @@ in
       type = types.listOf types.package;
       description = "安装的jetbrains工具";
       default = with pkgs; [
-        jetbrains.idea
-        jetbrains.clion
-        jetbrains.pycharm
-        jetbrains.webstorm
-        jetbrains.phpstorm
-        jetbrains.datagrip
-        jetbrains.ruby-mine
-        jetbrains.dataspell
-        jetbrains.rider
-        jetbrains.rust-rover
-        jetbrains.goland
+        intellij-idea
+        clion
+        pycharm
+        webstorm
+        phpstorm
+        datagrip
+        ruby-mine
+        dataspell
+        rider
+        rust-rover
+        goland
       ];
     };
   };

@@ -1,31 +1,61 @@
 {
   lib,
   stdenvNoCC,
-  fetchzip,
+  fetchurl,
   makeWrapper,
   jdk,
+  unar,
 }:
 let
-  system =
+  isDarwin = stdenvNoCC.hostPlatform.isDarwin;
+  version = "271.2085.0";
+  src =
     {
-      aarch64-darwin = "mac-aarch64";
-      x86_64-linux = "linux-x64";
+      aarch64-darwin = {
+        url = "https://download.jetbrains.com/language-server/kotlin-server/${version}/kotlin-server-${version}-aarch64.sit";
+        hash = "sha256-LSI4j1i+b036eo8YweIxhxFk3KzBbkB1WQKdcjKBa0o=";
+      };
+      x86_64-linux = {
+        url = "https://download.jetbrains.com/language-server/kotlin-server/${version}/kotlin-server-${version}.tar.gz";
+        hash = "sha256-45jnmQJ/QXSeoz+qV0cDB9E9QPkQlhhYx+MK29d4rgg=";
+      };
     }
     .${stdenvNoCC.hostPlatform.system};
 in
 stdenvNoCC.mkDerivation (finalAttrs: {
+  inherit version;
   pname = "kotlin-lsp";
-  version = "261.13587.0";
-  src = fetchzip {
-    url = "https://download-cdn.jetbrains.com/kotlin-lsp/${finalAttrs.version}/kotlin-lsp-${finalAttrs.version}-${system}.zip";
-    stripRoot = false;
-    hash = "sha256-zwlzVt3KYN0OXKr6sI9XSijXSbTImomSTGRGa+3zCK8=";
+  src = fetchurl {
+    url = src.url;
+    hash = src.hash;
   };
-  nativeBuildInputs = [ makeWrapper ];
+  dontConfigure = true;
+  dontBuild = true;
+  nativeBuildInputs = [
+    makeWrapper
+  ]
+  ++ lib.optionals isDarwin [ unar ];
+
+  unpackPhase = ''
+    runHook preUnpack
+
+    ${
+      if isDarwin then
+        ''
+          unar -f -D -k hidden -o . "$src"
+        ''
+      else
+        ''
+          tar -xzf "$src"
+        ''
+    }
+    runHook postUnpack
+  '';
   installPhase = ''
     mkdir -p $out
-    cp -r $src/* $out/
+    cp -R kotlin-server-$version/* "$out"
     chmod +x $out/kotlin-lsp.sh
+    patchShebangs "$out/kotlin-lsp.sh"
     makeWrapper $out/kotlin-lsp.sh $out/bin/kotlin-lsp --set JAVA_HOME ${jdk}
   '';
   meta = with lib; {
